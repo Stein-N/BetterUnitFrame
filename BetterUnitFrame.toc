@@ -6,12 +6,13 @@
 ## Notes: Change the appearence of Vanilla Unit Frames
 ## SavedVariables: Buf_Settings
 
-## Complete Data
+## Data
 Data/AddOnData.lua
 
-## All functions that must be loaded before Main 
+## Utils
 Settings/AddOnSettings.lua
 Settings/OptionsMenu.lua
+Events/BufEvents.lua
 
-## Main Entrypoint
+## Core Logic
 Core.lua
