@@ -7,11 +7,11 @@
 ## SavedVariables: Buf_Settings
 
 ## Complete Data
-Data/BufData.lua
+Data/AddOnData.lua
 
 ## All functions that must be loaded before Main 
-Settings/BufSettings.lua
-Settings/BufMenu.lua
+Settings/AddOnSettings.lua
+Settings/OptionsMenu.lua
 
 ## Main Entrypoint
 Core.lua

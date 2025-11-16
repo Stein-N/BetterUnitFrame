@@ -16,8 +16,8 @@ local handler = {}
 
 -- Build the OPtionstab when the Addon was loaded
 function handler.ADDON_LOADED(name)
-    if name == BufData["addonName"] then
-        BufMenu:BuildOptionsMenu()
+    if name == AddOnData["addonName"] then
+        OptionsMenu:BuildOptionsMenu()
     end
 end
 

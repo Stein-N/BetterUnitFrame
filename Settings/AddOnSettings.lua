@@ -1,4 +1,4 @@
-BufSettings = {
+AddOnSettings = {
     toggleBetterFrames = {
         key = "Frame_Toggle",
         default = true,
