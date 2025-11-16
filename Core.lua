@@ -1,7 +1,7 @@
 -- ===================================== --
 -- ==         Saved Variables         == --
 -- ===================================== --
-TemplateAddOnDB = {}
+Buf_Settings = {}
 
 
 -- ===================================== --
@@ -16,8 +16,8 @@ local handler = {}
 
 -- Build the OPtionstab when the Addon was loaded
 function handler.ADDON_LOADED(name)
-    if name == TemplateAddOnData["addonName"] then
-        TemplateAddOnSettings:BuildOptionsMenu()
+    if name == BufData["addonName"] then
+        BufMenu:BuildOptionsMenu()
     end
 end
 

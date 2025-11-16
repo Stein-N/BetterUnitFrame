@@ -1,0 +1,17 @@
+## Interface: 110200, 110205, 120000
+## Title: BetterUnitFrame
+## Version: 0.0.1
+## Author: xStopho
+## Category: UI
+## Notes: Change the appearence of Vanilla Unit Frames
+## SavedVariables: Buf_Settings
+
+## Complete Data
+Data/BufData.lua
+
+## All functions that must be loaded before Main 
+Settings/BufSettings.lua
+Settings/BufMenu.lua
+
+## Main Entrypoint
+Core.lua

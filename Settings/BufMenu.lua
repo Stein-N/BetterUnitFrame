@@ -1,4 +1,4 @@
-TemplateAddOnSettings = {}
+BufMenu = {}
 local langCode = GetLocale()
 
 -- ====================== --
@@ -8,14 +8,14 @@ local langCode = GetLocale()
 -- Set the default value for an Option inside the SavedVariables
 local function SetDefault(option)
     local key = option["key"]
-    if TemplateAddOnDB[key] then return end
+    if Buf_Settings[key] then return end
 
-    TemplateAddOnDB[key] = option["default"]
+    Buf_Settings[key] = option["default"]
 end
 
 -- Basic function to update the Option Value
 local function UpdateSetting(setting, value)
-    TemplateAddOnDB[setting:GetVariable()] = value
+    Buf_Settings[setting:GetVariable()] = value
 end
 
 -- Register the given Option inside the Category
@@ -25,7 +25,7 @@ local function RegisterSetting(category, option, lang)
         category, -- Given Category, can also be a Subcategory
         variable, -- Option Variable
         variable, -- Option Variable
-        TemplateAddOnDB, -- AddOn Options Database
+        Buf_Settings, -- AddOn Options Database
         type(option["default"]), -- Gets the Option Datatype from the default Value
         lang["name"], -- Option Name visible in the UI
         option["default"] -- Default value
@@ -34,7 +34,7 @@ end
 
 -- Loads the Option and Lang Object from the Database
 local function GetOption(optionKey)
-    local option = TemplateAddOnOptions[optionKey]
+    local option = BufSettings[optionKey]
     local lang = option[langCode] or option["enEN"]
     return option, lang
 end
@@ -78,17 +78,17 @@ end
 -- ==  Option Menu Builder  == --
 -- =========================== --
 
-function TemplateAddOnSettings:BuildOptionsMenu()
-    local general = Settings.RegisterVerticalLayoutCategory(TemplateAddOnData["addonName"])
+function BufMenu:BuildOptionsMenu()
+    local general = Settings.RegisterVerticalLayoutCategory(BufData["addonName"])
 
     -- Register all Default Values
-    for _, key in ipairs(TemplateAddOnOptions) do
-        local option = TemplateAddOnOptions[key]
+    for _, key in ipairs(BufSettings) do
+        local option = BufSettings[key]
         SetDefault(option)
     end
 
     -- == General Tab == --
-    RegisterCheckbox(general, "templateSetting")
+    RegisterCheckbox(general, "toggleBetterFrames")
 
     Settings.RegisterAddOnCategory(general)
 end
