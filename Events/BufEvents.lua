@@ -19,8 +19,11 @@ function handler.PLAYER_ENTERING_WORLD()
     for _, element in pairs(PlayerBars) do element:Hide() end
     for _, element in pairs(PlayerContainer) do element:Hide() end
 
+    local _, class = UnitClass("player")
+    local classColor = RAID_CLASS_COLORS[class]
+
     PlayerContainer.frame_texture:Show()
-    PlayerContainer.frame_texture:SetTexture("Interface\\AddOns\\BetterUnitFrame\\Media\\No-Portrait-2-Rows")
+    PlayerContainer.frame_texture:SetTexture("Interface\\AddOns\\BetterUnitFrame\\Media\\No-Portrait-2-Rows-Shadow")
 
     PlayerBars.health_bar:Show()
     PlayerBars.health_bar:SetStatusBarTexture("UI-HUD-UnitFrame-Player-PortraitOff-Bar-Health")
@@ -35,11 +38,17 @@ function handler.PLAYER_ENTERING_WORLD()
     PlayerBars.health_bar_text:Show()
 
     PlayerBars.mana_bar:Show()
-    -- PlayerBars.mana_bar:SetStatusBarTexture("UI-HUD-UnitFrame-Player-PortraitOff-Bar-RunicPower")
+    PlayerBars.mana_bar:SetStatusBarTexture("UI-HUD-UnitFrame-Player-PortraitOff-Bar-RunicPower")
     PlayerBars.mana_bar:ClearAllPoints()
     PlayerBars.mana_bar:SetPoint("TOPLEFT", PlayerFrame, "TOPLEFT", 22, -54)
     PlayerBars.mana_bar:SetWidth(188)
     PlayerBars.mana_bar:SetHeight(13)
+
+    if DemonHunterSoulFragmentsBar then
+        DemonHunterSoulFragmentsBar:ClearAllPoints()
+        DemonHunterSoulFragmentsBar:SetPoint("CENTER", PlayerFrame, "BOTTOM", 0, 0)
+        DemonHunterSoulFragmentsBar:SetHeight(25)
+    end
 
     if ResourceFrames.DEATHKNIGHT then
         ResourceFrames.DEATHKNIGHT:ClearAllPoints()

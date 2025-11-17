@@ -7,8 +7,9 @@
 ## SavedVariables: Buf_Settings
 
 ## Data
-Data/BufData.lua
 Data/FrameData.lua
+Data/ClassData.lua
+Data/BufData.lua
 
 ## Utils
 Settings/BufSettings.lua

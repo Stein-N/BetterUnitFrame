@@ -55,5 +55,6 @@ ResourceFrames = {
     DEATHKNIGHT = RuneFrame,
     EVOKER = EssencePlayerFrame,
     MAGE = MageArcaneChargesFrame,
-    MONK = MonkHarmonyBarFrame
+    MONK = MonkHarmonyBarFrame,
+    DEMONHUNTER = DemonHunterSoulFragmentsBar
 }
