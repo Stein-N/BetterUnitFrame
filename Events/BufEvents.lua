@@ -44,12 +44,6 @@ function handler.PLAYER_ENTERING_WORLD()
     PlayerBars.mana_bar:SetWidth(188)
     PlayerBars.mana_bar:SetHeight(13)
 
-    if DemonHunterSoulFragmentsBar then
-        DemonHunterSoulFragmentsBar:ClearAllPoints()
-        DemonHunterSoulFragmentsBar:SetPoint("CENTER", PlayerFrame, "BOTTOM", 0, 0)
-        DemonHunterSoulFragmentsBar:SetHeight(25)
-    end
-
     if ResourceFrames.DEATHKNIGHT then
         ResourceFrames.DEATHKNIGHT:ClearAllPoints()
         ResourceFrames.DEATHKNIGHT:SetPoint("CENTER", PlayerFrame, "BOTTOM", 0, 0)
