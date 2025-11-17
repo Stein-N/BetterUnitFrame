@@ -1,4 +1,4 @@
-AddOnData = {
+BufData = {
     ["addonName"] = "BetterUnitFrame",
     ["optionCategories"] = {
         ["deDE"] = {

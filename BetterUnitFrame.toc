@@ -7,11 +7,12 @@
 ## SavedVariables: Buf_Settings
 
 ## Data
-Data/AddOnData.lua
+Data/BufData.lua
+Data/FrameData.lua
 
 ## Utils
-Settings/AddOnSettings.lua
-Settings/OptionsMenu.lua
+Settings/BufSettings.lua
+Settings/BufMenu.lua
 Events/BufEvents.lua
 
 ## Core Logic

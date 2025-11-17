@@ -1,4 +1,4 @@
-OptionsMenu = {}
+BufMenu = {}
 local langCode = GetLocale()
 
 -- ====================== --
@@ -34,7 +34,7 @@ end
 
 -- Loads the Option and Lang Object from the Database
 local function GetOption(optionKey)
-    local option = AddOnSettings[optionKey]
+    local option = BufSettings[optionKey]
     local lang = option[langCode] or option["enEN"]
     return option, lang
 end
@@ -78,12 +78,12 @@ end
 -- ==  Option Menu Builder  == --
 -- =========================== --
 
-function OptionsMenu:BuildOptionsMenu()
-    local general = Settings.RegisterVerticalLayoutCategory(AddOnData["addonName"])
+function BufMenu:BuildOptionsMenu()
+    local general = Settings.RegisterVerticalLayoutCategory(BufData["addonName"])
 
     -- Register all Default Values
-    for _, key in ipairs(OptionsMenu) do
-        local option = OptionsMenu[key]
+    for _, key in ipairs(BufSettings) do
+        local option = BufSettings[key]
         SetDefault(option)
     end
 
