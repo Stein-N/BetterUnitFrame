@@ -36,28 +36,16 @@ BufMedia = {
         top = 0.279296875,
         bottom = 0.416015625
     },
-    no_portrait_3_row_status = {
+    no_portrait_status = {
         left = 0.392578125,
         right = 0.78125,
         top = 0.41796875,
         bottom = 0.5546875
     },
-    no_portrait_3_row_status_shadow = {
+    no_portrait_status_shadow = {
         left = 0,
         right = 0.390625,
         top = 0.41796875,
         bottom = 0.5546875
-    },
-    no_portrait_2_row_status = {
-        left = 0.392578125,
-        right = 0.78125,
-        top = 0.556640625,
-        bottom = 0.693359375
-    },
-    no_portrait_2_row_status_shadow = {
-        left = 0,
-        right = 0.390625,
-        top = 0.556640625,
-        bottom = 0.693359375
     }
 }
