@@ -9,8 +9,13 @@
 ## Media
 Media/BufMedia.lua
 
+## Modules
+Modules/BaseModule.lua
+Modules/PlayerModule.lua
+
 ## Data
 Data/FrameData.lua
+Data/ClassData.lua
 Data/BufData.lua
 
 ## Utils
