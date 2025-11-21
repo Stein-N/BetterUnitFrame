@@ -1,4 +1,4 @@
-## Interface: 110200, 110205, 120000
+## Interface: 120000
 ## Title: BetterUnitFrame
 ## Version: 0.0.1
 ## Author: xStopho
@@ -6,9 +6,11 @@
 ## Notes: Change the appearence of Vanilla Unit Frames
 ## SavedVariables: Buf_Settings
 
+## Media
+Media/BufMedia.lua
+
 ## Data
 Data/FrameData.lua
-Data/ClassData.lua
 Data/BufData.lua
 
 ## Utils

@@ -39,7 +39,7 @@ PlayerContainer = {
     portrait = playerContainer.PlayerPortrait,
     portrait_mask = playerContainer.PlayerPortraitMask,
     frame_flash = playerContainer.FrameFlash,
-    frame_texture = playerContainer.FrameTexture, -- Border Texture for Health/Mana bar
+    frame_texture = playerContainer.FrameTexture,
     vehicle = playerContainer.VehicleFrameTexture,
     alternative_power_bar = playerContainer.AlternatePowerFrameTexture,
     status_texture = PlayerFrame.PlayerFrameContent.PlayerFrameContentMain.StatusTexture,
@@ -47,14 +47,14 @@ PlayerContainer = {
     player_level = PlayerLevelText
 }
 
-ResourceFrames = {
-    WARLOCK = WarlockPowerFrame,
-    ROGUE = RogueComboPointBarFrame,
-    DRUID = DruidComboPointBarFrame,
-    PALADIN = PaladinPowerBarFrame,
-    DEATHKNIGHT = RuneFrame,
-    EVOKER = EssencePlayerFrame,
-    MAGE = MageArcaneChargesFrame,
-    MONK = MonkHarmonyBarFrame,
-    DEMONHUNTER = DemonHunterSoulFragmentsBar
-}
+-- ResourceFrames = {
+--     WARLOCK = WarlockPowerFrame,
+--     ROGUE = RogueComboPointBarFrame,
+--     DRUID = DruidComboPointBarFrame,
+--     PALADIN = PaladinPowerBarFrame,
+--     DEATHKNIGHT = RuneFrame,
+--     EVOKER = EssencePlayerFrame,
+--     MAGE = MageArcaneChargesFrame,
+--     MONK = MonkHarmonyBarFrame,
+--     DEMONHUNTER = DemonHunterSoulFragmentsBar
+-- }
