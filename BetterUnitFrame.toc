@@ -9,10 +9,6 @@
 ## Media
 Media/BufMedia.lua
 
-## Modules
-Modules/BaseModule.lua
-Modules/PlayerModule.lua
-
 ## Data
 Data/FrameData.lua
 Data/ClassData.lua
@@ -22,6 +18,10 @@ Data/BufData.lua
 Settings/BufSettings.lua
 Settings/BufMenu.lua
 Events/BufEvents.lua
+
+## Modules
+Modules/BaseModule.lua
+Modules/PlayerModule.lua
 
 ## Core Logic
 Core.lua
