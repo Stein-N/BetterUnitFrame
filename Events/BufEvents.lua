@@ -13,9 +13,11 @@ function handler.ADDON_LOADED(name)
 end
 
 function handler.PLAYER_ENTERING_WORLD()
-    
+    PlayerModule.Initialize()
+    PlayerModule.UpdateFrame()
 end
 
 function handler.PLAYER_SPECIALIZATION_CHANGED()
-    
+    PlayerModule.Initialize()
+    PlayerModule.UpdateFrame()
 end

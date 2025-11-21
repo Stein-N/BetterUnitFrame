@@ -7,59 +7,60 @@ local _specData
 local _healthColor
 local _powerColor
 
-
-function PlayerModule.Initialize()
-    _ , _class = UnitClass("player")
-    _, _specName = GetSpecializationInfo(GetSpecialization())
-    _specData = ClassData[_specName]
-    _healthColor = RAID_CLASS_COLORS[_class]
-    _powerColor = PowerBarColor[_specData.power_type]
-end
-
 --- Update the player's frame texture based on specialization
-function PlayerModule.UpdateFrameTexture()
-    local element = PlayerContainer.frame_texture
-
+local function UpdateFrameTexture()
     if _specData then
         -- TODO: Switch between shadow and non shadow based on settings
-        BaseModule.SetElementTexture(element, _atlas, BufMedia[_specData.frame_texture_shadow])
+        BaseModule.SetElementTexture(PlayerContainer.frame_texture, _atlas, BufMedia[_specData.frame_texture_shadow])
+        BaseModule.SetElementTexture(PlayerContainer.status_texture, _atlas, BufMedia[_specData.status_texture_shadow])
+        BaseModule.SetElementTexture(PlayerContainer.frame_flash, "")
+    end
+
+    PlayerContainer.portrait:Hide()
+    PlayerContainer.portrait_mask:Hide()
+    PlayerContext.portrait_corner_icon:SetTexture(nil)
+end
+
+local function UpdateStatusBars()
+    local healthBar = PlayerBars.health_bar
+    local healthText = PlayerBars.health_bar_text
+
+    local manaBar = PlayerBars.mana_bar
+    local manaText = PlayerBars.mana_bar_text
+
+    if _specData then
+        -- Hide Masks
+        PlayerBars.health_bar_mask:Hide()
+        PlayerBars.mana_bar_mask:Hide()
+
+        -- Health Bar
+        BaseModule.SetStatusBarTexture(healthBar, "Health-Normal")
+        BaseModule.ClearAndSetPoint(healthBar, "TOPLEFT", PlayerFrame, "TOPLEFT", 20, -30)
+        -- BaseModule.SetStatusBarColor(healthBar, _healthColor)
+        BaseModule.SetStatusBarSize(healthBar, 192, 23)
+
+        -- Mana Bar
+        BaseModule.SetStatusBarTexture(manaBar, "Mana")
+        BaseModule.ClearAndSetPoint(manaBar, "TOPLEFT", PlayerFrame, "TOPLEFT", 20, -55)
+        BaseModule.SetStatusBarColor(manaBar, _powerColor)
+        BaseModule.SetStatusBarSize(manaBar, 192, 11)
+
+        -- Adjust Texts
+        BaseModule.ClearAndSetPoint(healthText, "RIGHT", healthBar, "RIGHT", -2, 0)
+        BaseModule.ClearAndSetPoint(manaText, "RIGHT", manaBar, "RIGHT", -2, 0)
     end
 end
 
---- Update the player's health bar based
-function PlayerModule.UpdateHealthBar()
-    local element = PlayerBars.health_bar
-    local elementText = PlayerBars.health_bar_text
+local function UpdateFrameIcons()
 
-    if _healthColor and _specData then
-        BaseModule.SetStatusBarTexture(element, "Interface\\AddOns\\BetterUnitFrame\\Media\\No-Portrait-Health")
-        BaseModule.ClearAndSetPoint(element, "TOPLEFT", PlayerFrame, "TOPLEFT", 20, -30)
-        BaseModule.SetStatusBarColor(element, _healthColor)
-        BaseModule.SetStatusBarSize(element, 192, 23)
-
-        -- TODO: Adjust text position and anchor point based on settings
-        BaseModule.ClearAndSetPoint(elementText, "RIGHT", element, "RIGHT", -2, 0)
-    end
 end
 
---- Update the player's power bar based
-function PlayerModule.UpdatePowerBar()
-    local element = PlayerBars.mana_bar
-    local elementText = PlayerBars.mana_bar_text
-
-    if _powerColor and _specData then
-        BaseModule.SetStatusBarTexture(element, "Interface\\AddOns\\BetterUnitFrame\\Media\\No-Portrait-Mana")
-        BaseModule.ClearAndSetPoint(element, "TOPLEFT", PlayerFrame, "TOPLEFT", 21, -55)
-        BaseModule.SetStatusBarColor(element, _powerColor)
-        BaseModule.SetStatusBarSize(element, 192, 11)
-
-        -- TODO: Adjust text position and anchor point based on settings
-        BaseModule.ClearAndSetPoint(elementText, "RIGHT", element, "RIGHT", -2, 0)
-    end
+local function UpdateFrameText()
+    
 end
 
 --- Update the text size of health and power bars
-function PlayerModule.UpdateTextSize()
+local function UpdateTextSize()
     local healthText = PlayerBars.health_bar_text
     local powerText = PlayerBars.mana_bar_text
 
@@ -71,7 +72,7 @@ function PlayerModule.UpdateTextSize()
 end
 
 --- Update the player's name display
-function PlayerModule.UpdatePlayerName()
+local function UpdatePlayerName()
     local element = PlayerContainer.player_name
 
     -- TODO: Add ability to show/hide, set health_bar as relative frame and position
@@ -79,7 +80,7 @@ function PlayerModule.UpdatePlayerName()
 end
 
 --- Update the player's level display
-function PlayerModule.UpdatePlayerLevel()
+local function UpdatePlayerLevel()
     local element = PlayerContainer.player_level
 
     -- TODO: Add ability to show/hide, set health_bar as relative frame and position
@@ -87,23 +88,66 @@ function PlayerModule.UpdatePlayerLevel()
 end
 
 --- Update the resource frame
-function PlayerModule.UpdateResourceFrame()
-    if _specData then
-        local frame = _specData.resource_frame
-
-        -- TODO: Add ability to show/hide, set health_bar as relative frame and position
-        BaseModule.ClearAndSetPoint(frame, "TOPRIGHT", PlayerFrame, "RIGHT", -18, -15)
+local function UpdateResourceFrame()
+    local frame = _specData.resource_frame
+    if frame then
+        frame:HookScript("OnUpdate", function(self)
+            BaseModule.ClearAndSetPoint(self, "TOPRIGHT", PlayerFrame, "RIGHT", -18, -15)
+        end)
     end
 end
 
 --- Update the totem frames position
-function PlayerModule.UpdateTotemFrame()
+local function UpdateTotemFrame()
     local frame = TotemFrame
 
     if frame then
-
-        -- TODO: ADjust position and anchor based on settings
-        -- TODO: Modify TotemFrame to change start new line if a threshhold is reached
-        BaseModule.ClearAndSetPoint(frame, "TOPLEFT", PlayerFrame, "BOTTOMLEFT", 0, 0)
+        frame:HookScript("OnUpdate", function(self)
+            -- TODO: Adjust position and anchor based on settings
+            -- TODO: Modify TotemFrame to change start new line if a threshhold is reached
+            BaseModule.ClearAndSetPoint(self, "TOPLEFT", PlayerFrame, "LEFT", 0, -18)
+        end)
     end
 end
+
+--- ############################################################## ---
+--- ###               Module External Functions                ### ---
+--- ############################################################## ---
+
+function PlayerModule.Initialize()
+    _ , _class = UnitClass("player")
+    _, _specName = GetSpecializationInfo(GetSpecialization())
+    _specData = ClassData[_specName]
+    _healthColor = RAID_CLASS_COLORS[_class]
+    _powerColor = PowerBarColor[_specData.power_type]
+end
+
+function PlayerModule.UpdateFrame()
+    UpdateFrameTexture()
+    UpdateStatusBars()
+    UpdatePlayerName()
+    UpdatePlayerLevel()
+    UpdateTextSize()
+    UpdateResourceFrame()
+    UpdateTotemFrame()
+end
+
+--- ############################################################## ---
+--- ###                 Module Function Hooks                  ### ---
+--- ############################################################## ---
+
+function PlayerModule.InitializeHooks()
+
+end
+
+hooksecurefunc("UnitFrameHealthBar_OnUpdate", function(self)
+    local health = UnitHealth("player")
+    local perc = UnitHealthPercent("player", false, true)
+
+    PlayerBars.health_bar_text:SetText(tostring(health) .. " - " .. string.format("%.0f", perc) .. "%")
+end)
+
+hooksecurefunc("UnitFrameManaBar_OnUpdate", function(self)
+    local power = UnitPower("player")
+    PlayerBars.mana_bar_text:SetText(tostring(power))
+end)

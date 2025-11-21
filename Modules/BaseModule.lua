@@ -5,7 +5,7 @@ BaseModule = {}
 ---@param texture string
 function BaseModule.SetStatusBarTexture(element, texture)
     if element and texture then
-        element:SetStatusBarTexture(texture)
+        element:SetStatusBarTexture("Interface\\AddOns\\BetterUnitFrame\\Media\\No-Portrait-" .. texture)
     end
 end
 
