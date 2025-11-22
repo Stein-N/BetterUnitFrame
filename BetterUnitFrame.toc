@@ -15,7 +15,6 @@ Data/ClassData.lua
 Data/BufData.lua
 
 ## Utils
-Settings/BufSettings.lua
 Settings/BufMenu.lua
 Events/BufEvents.lua
 
