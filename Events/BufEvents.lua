@@ -7,7 +7,7 @@ function BufEvents:OnEvent(event, ...)
 end
 
 function handler.ADDON_LOADED(name)
-    if name == BufData["addonName"] then
+    if name == BufData.addon_name then
         BufMenu:BuildOptionsMenu()
     end
 end

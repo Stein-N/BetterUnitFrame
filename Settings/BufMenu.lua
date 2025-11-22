@@ -29,7 +29,12 @@ end
 -- Loads the Option and Lang Object from the Database
 local function GetOption(optionKey)
     local option = BufSettings[optionKey]
-    local lang = option[langCode] or option["enEN"]
+    local lang
+    if option[langCode] then
+        lang = option[langCode]
+    else
+        lang = option["enEn"]
+    end
     return option, lang
 end
 
@@ -61,7 +66,7 @@ end
 local function RegisterCheckBoxWithButton(category, optionKey, btnFunc, cbRequired, layout)
     local setting, lang = CreateSetting(category, optionKey)
     local entry = CreateSettingsCheckboxWithButtonInitializer(setting,
-                    lang["button_text"] or "missing_translation", btnFunc, cbRequired, lang["tooltip"])
+                    lang["button"] or "missing_translation", btnFunc, cbRequired, lang["tooltip"])
 
     layout:AddInitializer(entry)
 end
@@ -89,8 +94,7 @@ end
 -- =========================== --
 
 function BufMenu:BuildOptionsMenu()
-    local general = Settings.RegisterVerticalLayoutCategory(BufData["addonName"])
-    local player, playerLayout = Settings.RegisterVerticalLayoutSubcategory(general, "Test")
+    local general = Settings.RegisterVerticalLayoutCategory(BufData.addon_name)
 
     -- Register all Default Values
     for _, key in ipairs(BufSettings) do
@@ -99,9 +103,6 @@ function BufMenu:BuildOptionsMenu()
     end
 
     -- == General Tab == --
-    RegisterCheckbox(general, "toggleBetterFrames")
-
-    -- == Player Tab == --
 
     Settings.RegisterAddOnCategory(general)
 end
