@@ -146,6 +146,6 @@ hooksecurefunc("UnitFrameHealthBar_OnUpdate", function(self)
 end)
 
 hooksecurefunc("UnitFrameManaBar_OnUpdate", function(self)
-    local power = UnitPowerPercent("player")
+    local power = UnitPower("player")
     PlayerFrameText.mana_bar_text:SetText(tostring(power))
 end)
