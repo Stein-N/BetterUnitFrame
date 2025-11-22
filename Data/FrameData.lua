@@ -1,60 +1,43 @@
-local playerContext = PlayerFrame.PlayerFrameContent.PlayerFrameContentContextual
-local playerContainer = PlayerFrame.PlayerFrameContainer
-local playerHealth = PlayerFrame.PlayerFrameContent.PlayerFrameContentMain.HealthBarsContainer
-local playerMana = PlayerFrame.PlayerFrameContent.PlayerFrameContentMain.ManaBarArea
+local context = PlayerFrame.PlayerFrameContent.PlayerFrameContentContextual
+local content = PlayerFrame.PlayerFrameContent.PlayerFrameContentMain
+local container = PlayerFrame.PlayerFrameContainer
+local health = PlayerFrame.PlayerFrameContent.PlayerFrameContentMain.HealthBarsContainer
+local mana = PlayerFrame.PlayerFrameContent.PlayerFrameContentMain.ManaBarArea
 
-PlayerContext = {
-    attack_icon = playerContext.AttackIcon,
-    group_indicator = playerContext.GroupIndicator,
-    guide_icon = playerContext.GuideIcon,
-    leader_icon = playerContext.LeaderIcon,
-    pvp_icon = playerContext.PVPIcon,
-    play_time = playerContext.PlayerPlayTime,
-    portrait_corner_icon = playerContext.PlayerPortraitCornerIcon,
-    rest_loop = playerContext.PlayerRestLoop,
-    prestige_portrait = playerContext.PrestigePortrait,
-    pvp_timer_text = playerContext.PvpTimerText,
-    ready_check = playerContext.ReadyCheck,
-    role_icon = playerContext.RoleIcon
-}
-
-PlayerBars = {
-    health_bar = playerHealth.HealthBar,
-    health_bar_mask = playerHealth.HealthBarMask,
-    health_bar_text = playerHealth.HealthBarText,
-    health_left_text = playerHealth.LeftText,
-    health_animated_loss = playerHealth.PlayerFrameHealthBarAnimatedLoss,
-    health_temp_max_loss = playerHealth.PlayerFrameTempMaxHealthLoss,
-    health_right_text = playerHealth.RightText,
-    health_temp_max_loss_divider = playerHealth.TempMaxHealthLossDivider,
-
-    mana_bar = playerMana.ManaBar,
-    mana_bar_mask = playerMana.ManaBar.ManaBarMask,
-    mana_bar_text = playerMana.ManaBar.ManaBarText,
-    mana_left_text = playerMana.ManaBar.LeftText,
-    mana_right_text = playerMana.ManaBar.RightText
-}
-
-PlayerContainer = {
-    portrait = playerContainer.PlayerPortrait,
-    portrait_mask = playerContainer.PlayerPortraitMask,
-    frame_flash = playerContainer.FrameFlash,
-    frame_texture = playerContainer.FrameTexture,
-    vehicle = playerContainer.VehicleFrameTexture,
-    alternative_power_bar = playerContainer.AlternatePowerFrameTexture,
-    status_texture = PlayerFrame.PlayerFrameContent.PlayerFrameContentMain.StatusTexture,
+PlayerFrameText = {
+    health_bar_text = health.HealthBarText,
+    mana_bar_text = mana.ManaBar.ManaBarText,
     player_name = PlayerName,
     player_level = PlayerLevelText
 }
 
--- ResourceFrames = {
---     WARLOCK = WarlockPowerFrame,
---     ROGUE = RogueComboPointBarFrame,
---     DRUID = DruidComboPointBarFrame,
---     PALADIN = PaladinPowerBarFrame,
---     DEATHKNIGHT = RuneFrame,
---     EVOKER = EssencePlayerFrame,
---     MAGE = MageArcaneChargesFrame,
---     MONK = MonkHarmonyBarFrame,
---     DEMONHUNTER = DemonHunterSoulFragmentsBar
--- }
+PlayerFrameIcons = {
+    attack_icon = context.AttackIcon,
+    group_indicator = context.GroupIndicator,
+    guide_icon = context.GuideIcon,
+    leader_icon = context.LeaderIcon,
+    pvp_icon = context.PVPIcon,
+    pvp_timer = context.PvpTimerText,
+    play_time = context.PlayerPlayTime,
+    portrait_corner_icon = context.PlayerPortraitCornerIcon,
+    rest_loop = context.PlayerRestLoop,
+    prestige_portrait = context.PrestigePortrait,
+    ready_check = context.ReadyCheck,
+    role_icon = context.RoleIcon
+}
+
+PlayerFrameTextures = {
+    frame_texture = container.FrameTexture,
+    frame_flash = container.FrameFlash,
+    status_texture = content.StatusTexture,
+    vehicle_texture = container.VehicleFrameTexture,
+    portrait_texture = container.PlayerPortrait,
+    portrait_mask = container.PlayerPortraitMask
+}
+
+PlayerFrameBars = {
+    health_bar = health.HealthBar,
+    health_bar_mask = health.HealthBarMask,
+    mana_bar = mana.ManaBar,
+    mana_bar_mask = mana.ManaBar.ManaBarMask
+}
