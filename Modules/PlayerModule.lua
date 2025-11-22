@@ -11,32 +11,32 @@ local _powerColor
 local function UpdateFrameTexture()
     if _specData then
         -- TODO: Switch between shadow and non shadow based on settings
-        BaseModule.SetElementTexture(PlayerContainer.frame_texture, _atlas, BufMedia[_specData.frame_texture_shadow])
-        BaseModule.SetElementTexture(PlayerContainer.status_texture, _atlas, BufMedia[_specData.status_texture_shadow])
-        BaseModule.SetElementTexture(PlayerContainer.frame_flash, "")
+        BaseModule.SetElementTexture(PlayerFrameTextures.frame_texture, _atlas, BufMedia[_specData.frame_texture_shadow])
+        BaseModule.SetElementTexture(PlayerFrameTextures.status_texture, _atlas, BufMedia[_specData.status_texture_shadow])
+        BaseModule.SetElementTexture(PlayerFrameTextures.frame_flash, "") -- TODO: Add a new Frame Flash Texture
     end
 
-    PlayerContainer.portrait:Hide()
-    PlayerContainer.portrait_mask:Hide()
-    PlayerContext.portrait_corner_icon:SetTexture(nil)
+    PlayerFrameTextures.portrait_texture:Hide()
+    PlayerFrameTextures.portrait_mask:Hide()
+    PlayerFrameIcons.portrait_corner_icon:SetTexture(nil)
 end
 
 local function UpdateStatusBars()
-    local healthBar = PlayerBars.health_bar
-    local healthText = PlayerBars.health_bar_text
+    local healthBar = PlayerFrameBars.health_bar
+    local healthText = PlayerFrameText.health_bar_text
 
-    local manaBar = PlayerBars.mana_bar
-    local manaText = PlayerBars.mana_bar_text
+    local manaBar = PlayerFrameBars.mana_bar
+    local manaText = PlayerFrameText.mana_bar_text
 
     if _specData then
         -- Hide Masks
-        PlayerBars.health_bar_mask:Hide()
-        PlayerBars.mana_bar_mask:Hide()
+        PlayerFrameBars.health_bar_mask:Hide()
+        PlayerFrameBars.mana_bar_mask:Hide()
 
         -- Health Bar
-        BaseModule.SetStatusBarTexture(healthBar, "Health-Normal")
+        BaseModule.SetStatusBarTexture(healthBar, "Health")
         BaseModule.ClearAndSetPoint(healthBar, "TOPLEFT", PlayerFrame, "TOPLEFT", 20, -30)
-        -- BaseModule.SetStatusBarColor(healthBar, _healthColor)
+        BaseModule.SetStatusBarColor(healthBar, _healthColor)
         BaseModule.SetStatusBarSize(healthBar, 192, 23)
 
         -- Mana Bar
@@ -51,18 +51,18 @@ local function UpdateStatusBars()
     end
 end
 
-local function UpdateFrameIcons()
-
+local function UpdateFrameContext()
+    -- TODO: Implement after settings, instead of each item it will iterate through the PlayerContext object 
 end
 
 local function UpdateFrameText()
-    
+
 end
 
 --- Update the text size of health and power bars
 local function UpdateTextSize()
-    local healthText = PlayerBars.health_bar_text
-    local powerText = PlayerBars.mana_bar_text
+    local healthText = PlayerFrameText.health_bar_text
+    local powerText = PlayerFrameText.mana_bar_text
 
     if _specData then
         -- TODO: Adjust text size based on settings
@@ -73,7 +73,7 @@ end
 
 --- Update the player's name display
 local function UpdatePlayerName()
-    local element = PlayerContainer.player_name
+    local element = PlayerFrameText.player_name
 
     -- TODO: Add ability to show/hide, set health_bar as relative frame and position
     BaseModule.ClearAndSetPoint(element, "TOPLEFT", PlayerFrame, "TOPLEFT", 20, -16)
@@ -81,7 +81,7 @@ end
 
 --- Update the player's level display
 local function UpdatePlayerLevel()
-    local element = PlayerContainer.player_level
+    local element = PlayerFrameText.player_level
 
     -- TODO: Add ability to show/hide, set health_bar as relative frame and position
     BaseModule.ClearAndSetPoint(element, "TOPRIGHT", PlayerFrame, "TOPRIGHT", -20, -17)
@@ -130,24 +130,22 @@ function PlayerModule.UpdateFrame()
     UpdateTextSize()
     UpdateResourceFrame()
     UpdateTotemFrame()
+
+    UpdateFrameText()
 end
 
 --- ############################################################## ---
 --- ###                 Module Function Hooks                  ### ---
 --- ############################################################## ---
 
-function PlayerModule.InitializeHooks()
-
-end
-
 hooksecurefunc("UnitFrameHealthBar_OnUpdate", function(self)
     local health = UnitHealth("player")
     local perc = UnitHealthPercent("player", false, true)
 
-    PlayerBars.health_bar_text:SetText(tostring(health) .. " - " .. string.format("%.0f", perc) .. "%")
+    PlayerFrameText.health_bar_text:SetText(tostring(health) .. " - " .. string.format("%.0f", perc) .. "%")
 end)
 
 hooksecurefunc("UnitFrameManaBar_OnUpdate", function(self)
-    local power = UnitPower("player")
-    PlayerBars.mana_bar_text:SetText(tostring(power))
+    local power = UnitPowerPercent("player")
+    PlayerFrameText.mana_bar_text:SetText(tostring(power))
 end)
