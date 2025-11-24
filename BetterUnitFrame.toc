@@ -9,6 +9,12 @@
 ## Media
 Media/BufMedia.lua
 
+## Mixins
+Mixins/TestMixin.lua
+
+## Templates
+Templates/PreviewTemplates.xml
+
 ## Data
 Data/FrameData.lua
 Data/ClassData.lua

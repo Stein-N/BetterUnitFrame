@@ -1,0 +1,23 @@
+<Ui>
+    <Frame name="UnitFramePreviewTemplate" virtual="true" inherits="InsetFrameTemplate4" mixin="TestMixin">
+        <Size x="300" y="200"/>
+
+        <Anchors>
+            <Anchor point="CENTER" relativeKey="$parent" x="0" y ="0"/>
+        </Anchors>
+
+        <Scripts>
+            <OnShow method="OnShow"/>
+            <OnHide method="OnHide"/>
+        </Scripts>
+        <Layers>
+            <Layer level="OVERLAY">
+                <FontString text="Preview" inherits="GameFontNormal">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativeKey="$parent.Border" x="10" y="-10"/>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+    </Frame>
+</Ui>

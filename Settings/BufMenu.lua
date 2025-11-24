@@ -92,9 +92,10 @@ end
 -- =========================== --
 -- ==  Option Menu Builder  == --
 -- =========================== --
-
+local test, tLayout
 function BufMenu:BuildOptionsMenu()
     local general = Settings.RegisterVerticalLayoutCategory(BufData.addon_name)
+    test, tLayout = Settings.RegisterVerticalLayoutSubcategory(general, "Test")
 
     -- Register all Default Values
     for _, key in ipairs(BufSettings) do
@@ -103,6 +104,13 @@ function BufMenu:BuildOptionsMenu()
     end
 
     -- == General Tab == --
+    local tInit = Settings.CreatePanelInitializer("UnitFramePreviewTemplate", {})
+    tLayout:AddInitializer(tInit)
 
     Settings.RegisterAddOnCategory(general)
+end
+
+SLASH_BETTERUNITFRAME1 = "/buf"
+SlashCmdList["BETTERUNITFRAME"] = function(msg)
+    Settings.OpenToCategory(test:GetID())
 end
