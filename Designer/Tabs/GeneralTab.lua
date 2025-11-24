@@ -1,15 +1,20 @@
 GeneralTab = {}
 
-local frame = CreateFrame("Frame")
-local title
+local title = "General"
+local frame = CreateFrame("Frame", "BetterUnitFrame"..title, nil, "InsetFrameTemplate3")
 
-function GeneralTab.Add(text, parent, x, y)
-    title = text or "General"
-    if parent then
-        frame:ClearAllPoints()
-        frame:SetPoint("TOPLEFT", parent, "TOPLEFT", x, y)
-        frame:SetSize(400, 400)
-    end
+function GeneralTab.BuildTab(parent)
+    frame:SetPoint("TOPLEFT", parent, "TOPLEFT", 8, -40)
+    frame:SetSize(305, 255)
+    frame:Show()
+end
+
+function GeneralTab.GetTitle()
+    return title;
+end
+
+function GeneralTab.IsVisible()
+    return frame:IsVisible()
 end
 
 function GeneralTab.Show()
@@ -18,10 +23,4 @@ end
 
 function GeneralTab.Hide()
     frame:Hide()
-end
-
-function GeneralTab.Build()
-    local titleObj = frame:CreateFontString("GeneralTabTitle", "OVERLAY", "GameFont72Normal")
-    titleObj:SetText(title)
-    titleObj:SetPoint("TOPLEFT", frame, "TOPLEFT", 5, -5)
 end

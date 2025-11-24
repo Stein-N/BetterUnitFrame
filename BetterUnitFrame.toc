@@ -19,12 +19,12 @@ Settings/BufMenu.lua
 Events/BufEvents.lua
 Utils/BufUtils.lua
 
+## Designer Tabs
+Designer/Tabs/GeneralTab.lua
+
 ## Designer
 Designer/DesignerBase.lua
 Designer/DesignerFrame.lua
-
-## Designer Tabs
-Designer/Tabs/GeneralTab.lua
 
 ## Modules
 Modules/BaseModule.lua

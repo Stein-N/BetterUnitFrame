@@ -1,8 +1,8 @@
 DesignerBase = {}
 
 function DesignerBase.CreateBackdropFrame(name, parent, width, height, x, y)
-    local f = CreateFrame("Frame", "BetterUnitFrame" .. name, parent or UIParent, "BackdropTemplate")
-    DesignerBase.SetElementPosition(f, parent, x, y)
+    local f = CreateFrame("Frame", "BetterUnitFrame" .. name, nil, "InsetFrameTemplate")
+    DesignerBase.SetElementPosition(f, "TOPLEFT", parent, "TOPLEFT", x, y)
     DesignerBase.SetElementSize(f, width, height)
 
     return f
@@ -11,8 +11,10 @@ end
 function DesignerBase.CreateButton(title, parent, x, y, anchor, pAnchor)
     local b = CreateFrame("Button", "BetterUnitFrame"..title, parent, "GameMenuButtonTemplate")
     local w, h = BufUtils.GetStringSize(title)
+    b:SetText(title)
+    b:SetScale(1.15)
     DesignerBase.SetElementPosition(b, anchor, parent, pAnchor, x, y)
-    DesignerBase.SetElementSize(w, h)
+    DesignerBase.SetElementSize(b, w + 20, h + 15)
 
     return b
 end
@@ -20,6 +22,13 @@ end
 function DesignerBase.SetElementSize(element, width, height)
     if element then
         element:SetWidth(width or 500, height or 500)
+    end
+end
+
+function DesignerBase.SetElementStrata(element, strata, level)
+    if element then
+        element:SetFrameStrata(strata)
+        element:SetFrameLevel(level)
     end
 end
 

@@ -1,46 +1,57 @@
+DesignerFrame = {}
+
+local tabs = { [1] = GeneralTab}
 local frame = CreateFrame("Frame", "BetterUnitFrameDesigner", UIParent, "DefaultPanelTemplate")
+local cBtn = DesignerBase.CreateButton("Close", frame, -3, 4, "BOTTOMRIGHT", "BOTTOMRIGHT")
+DesignerBase.SetElementScript(cBtn, "OnClick", function(self) frame:Hide() end)
 
 frame:SetTitle("Better Unit Frame")
 frame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
 frame:SetSize(500, 500)
-frame:SetFrameStrata("HIGH")
-frame:SetFrameLevel(999)
+frame:SetFrameStrata("LOW")
+frame:SetFrameLevel(100)
 
-frame:SetMovable(true)
-frame:SetClampedToScreen(true)
-frame:RegisterForDrag("LeftButton")
-frame:EnableMouse(true)
-
+DesignerBase.SetElementMovable(frame, true, "LeftButton")
 DesignerBase.SetElementMoveArea(frame, 0, 0, frame:GetWidth(), -30)
 
-local btn = CreateFrame("Button", "DesignerCloseButton", frame, "GameMenuButtonTemplate")
-btn:SetText("Close")
-local width, height = BufUtils.GetStringSize(btn:GetText())
-btn:SetSize(width + 20, height + 10)
-btn:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", -3, 5)
-btn:SetScale(1.15)
+function DesignerFrame.AddTab(tab)
+    if tab then
+        for _, obj in ipairs(tabs) do
+            if obj == tab then return end
+        end
 
-local generalTab = CreateFrame("Frame", "TestTab", frame, "BackdropTemplate")
-local titleObj = generalTab:CreateFontString("GeneralTabTitle", "OVERLAY", "GameFontNormalLarge2")
-titleObj:SetText("General")
-titleObj:SetPoint("TOPLEFT", generalTab, "TOPLEFT", 5, -5)
-generalTab:SetPoint("TOPLEFT", frame, "TOPLEFT", 15, -60)
-generalTab:SetSize(frame:GetWidth() - 25, frame:GetHeight() - 95)
-
-local tabs = {"General", "Player", "Target", "Focus", "Boss"}
-local x = 0
-for index, key in ipairs(tabs) do
-    local b = CreateFrame("Button", "BetterUnitFrameDesignerTab"..key, frame, "GameMenuButtonTemplate")
-    local width, height = BufUtils.GetStringSize(key)
-    b:SetText(key)
-    b:SetSize(width + 20, height + 10)
-    b:SetPoint("TOPLEFT", frame, "TOPLEFT", 15 + x, -28)
-    b:SetScale(1.15)
-
-
-
-    x = x + b:GetWidth() + 4
+        table.insert(tabs, tab)
+    end
 end
 
+function DesignerFrame.BuildTabs()
+    local x = 10
+    for _, tab in ipairs(tabs) do
+        local btn = DesignerBase.CreateButton(tab.GetTitle(), frame, x, -25, "TOPLEFT", "TOPLEFT")
+        DesignerBase.SetElementScript(btn, "OnClick",
+        function(self)
+            print(tab.GetTitle() .. " clicked")
+            if tab.IsVisible() then
+                tab.Hide()
+            else tab.Show() end
+        end)
 
-frame:Show()
+        tab.BuildTab(frame)
+
+        x = x + btn:GetWidth() + 4
+    end
+end
+
+function DesignerFrame.HideAllTabs()
+    for _, value in ipairs(tabs) do
+        value.Hide()
+    end
+end
+
+function DesignerFrame.Show()
+    DesignerFrame.BuildTabs()
+
+    frame:Show()
+end
+
+DesignerFrame.Show()
