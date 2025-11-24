@@ -12,7 +12,7 @@
         </Scripts>
         <Layers>
             <Layer level="OVERLAY">
-                <FontString text="Preview" inherits="GameFontNormal">
+                <FontString text="Preview" inherits="GameFontNormalOutline">
                     <Anchors>
                         <Anchor point="TOPLEFT" relativeKey="$parent.Border" x="10" y="-10"/>
                     </Anchors>
