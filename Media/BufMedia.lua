@@ -1,5 +1,11 @@
 BufMedia = {
     atlas = "Interface\\AddOns\\BetterUnitFrame\\Media\\No-Portrait-Atlas",
+    white_border = {
+        left = 0.78125,
+        right = 1,
+        top = 0,
+        bottom = 0.041015625
+    },
     no_portrait_3_row_shadow = {
         left = 0,
         right = 0.390625,
