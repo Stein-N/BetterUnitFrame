@@ -1,10 +1,16 @@
 <Ui>
-    <Frame name="UnitFramePreviewTemplate" virtual="true" inherits="InsetFrameTemplate4">
+    <Frame name="PlayerUnitFramePreviewTemplate" virtual="true" inherits="InsetFrameTemplate4" mixin="PlayerUnitFramePreviewMixin">
         <Size x="300" y="200"/>
 
         <Anchors>
             <Anchor point="CENTER" relativeKey="$parent" x="0" y ="0"/>
         </Anchors>
+
+        <Scripts>
+            <OnShow method="OnShow"/>
+            <OnHide method="OnHide"/>
+        </Scripts>
+
         <Layers>
             <Layer level="OVERLAY">
                 <FontString text="Preview" inherits="GameFontNormalOutline">
