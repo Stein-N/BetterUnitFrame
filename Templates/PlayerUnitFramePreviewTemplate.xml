@@ -53,7 +53,7 @@
                     </Frame>
 
                     <!-- Health Text -->
-                    <Frame parentKey="HealthText" inherits="PreviewModuleTemplate">
+                    <Frame parentKey="UnitHealth" inherits="PreviewModuleTemplate">
                         <Size x="0" y="0"/>
                         <Layers>
                             <Layer level="OVERLAY">
@@ -85,7 +85,7 @@
                     </Frame>
 
                     <!-- Mana Text -->
-                    <Frame parentKey="HealthText" inherits="PreviewModuleTemplate">
+                    <Frame parentKey="UnitPower" inherits="PreviewModuleTemplate">
                         <Size x="0" y="0"/>
                         <Layers>
                             <Layer level="OVERLAY">
