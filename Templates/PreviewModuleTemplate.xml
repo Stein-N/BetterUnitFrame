@@ -1,9 +1,15 @@
 <Ui>
-    <Frame name="PreviewModuleTemplate" virtual="true" inherits="BackdropTemplate" mixin="PreviewModuleMixin">
-        <Size x="200" y="71"/>
+    <Frame name="PreviewModuleTemplate" virtual="true" mixin="PreviewModuleMixin">
+        <KeyValues>
+            <KeyValue key="isBuilt" value="false" type="boolean"/>
+        </KeyValues>
 
+        <Scripts>
+            <OnShow method="OnShow"/>
+            <OnMouseDown method="OnMouseDown"/>
+        </Scripts>
         <Anchors>
-            <Anchor point="CENTER" x="0" y="0"/>
+            <Anchor point="CENTER" relativeKey="$parent"/>
         </Anchors>
     </Frame>
 </Ui>

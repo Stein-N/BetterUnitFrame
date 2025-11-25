@@ -1,6 +1,6 @@
 <Ui>
-    <Frame name="PlayerUnitFramePreviewTemplate" virtual="true" inherits="InsetFrameTemplate4" mixin="PlayerUnitFramePreviewMixin">
-        <Size x="300" y="200"/>
+    <Frame name="PlayerUnitFramePreviewTemplate" virtual="true" inherits="InsetFrameTemplate4" mixin="PlayerUnitFramePreviewMixin" enableMouse="true">
+        <Size y="200"/>
 
         <Anchors>
             <Anchor point="CENTER" relativeKey="$parent" x="0" y ="0"/>
@@ -9,18 +9,133 @@
         <Scripts>
             <OnShow method="OnShow"/>
             <OnHide method="OnHide"/>
+            <OnMouseWheel method="OnMouseWheel"/>
         </Scripts>
 
         <Layers>
             <Layer level="OVERLAY">
                 <FontString text="Preview" inherits="GameFontNormalOutline">
                     <Anchors>
-                        <Anchor point="TOPLEFT" relativeKey="$parent.Border" x="10" y="-10"/>
+                        <Anchor point="TOPLEFT" relativeKey="$parent" x="10" y="-10"/>
                     </Anchors>
                 </FontString>
             </Layer>
         </Layers>
 
-        <Frames name="UnitFrameBase" virtual="true" inherits="PreviewModuleTemplate"/>
+        <Frames>
+            <Frame parentKey="FramePreview" inherits="PreviewModuleTemplate">
+                <Size x="232" y="100"/>
+
+                <Frames>
+                    <!-- Background for UniFrame Texture -->
+                    <Frame parentKey="FrameBackground" inherits="PreviewModuleTemplate">
+                        <Size x="200" y="71"/>
+                        <Layers>
+                            <Layer level="BACKGROUND">
+                                <Texture parentKey="Texture" file="Interface\AddOns\BetterUnitFrame\Media\No-Portrait-Atlas">
+                                    <TexCoords left="0.392578125" right="0.78125" top="0.140625" bottom="0.27734375"/>
+                                </Texture>
+                            </Layer>
+                        </Layers>
+                    </Frame>
+
+                    <!-- Health Bar -->
+                    <Frame parentKey="HealthBar" inherits="PreviewModuleTemplate">
+                        <Size x="193" y="23"/>
+                        <Layers>
+                            <Layer level="BACKGHROUND">
+                                <Texture parentKey="Texture" file="Interface\AddOns\BetterUnitFrame\Media\No-Portrait-Health-Normal"/>
+                            </Layer>
+                        </Layers>
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeKey="$parent" x="19" y="-30"/>
+                        </Anchors>
+                    </Frame>
+
+                    <!-- Health Text -->
+                    <Frame parentKey="HealthText" inherits="PreviewModuleTemplate">
+                        <Size x="0" y="0"/>
+                        <Layers>
+                            <Layer level="OVERLAY">
+                                <FontString text="128640 - 100%" inherits="TextStatusBarText" scale="1">
+                                    <Anchors>
+                                        <Anchor point="TOPRIGHT" relativeKey="$parent" x="-22" y="-36"/>
+                                    </Anchors>
+                                </FontString>
+                            </Layer>
+                        </Layers>
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeKey="$parent" x="0" y="0"/>
+                        </Anchors>
+                    </Frame>
+
+                    <!-- Mana Bar-->
+                    <Frame parentKey="ManaBar" inherits="PreviewModuleTemplate">
+                        <Size x="193" y="11"/>
+                        <Layers>
+                            <Layer level="BACKGHROUND">
+                                <Texture parentKey="Texture" file="Interface\AddOns\BetterUnitFrame\Media\No-Portrait-Power-Bar">
+                                    <Color r="0" g="0.82" b="1" a="1.0"/>
+                                </Texture>
+                            </Layer>
+                        </Layers>
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeKey="$parent" x="19" y="-55"/>
+                        </Anchors>
+                    </Frame>
+
+                    <!-- Mana Text -->
+                    <Frame parentKey="HealthText" inherits="PreviewModuleTemplate">
+                        <Size x="0" y="0"/>
+                        <Layers>
+                            <Layer level="OVERLAY">
+                                <FontString text="100" inherits="TextStatusBarText" scale="1">
+                                    <Anchors>
+                                        <Anchor point="TOPRIGHT" relativeKey="$parent" x="-22" y="-56"/>
+                                    </Anchors>
+                                </FontString>
+                            </Layer>
+                        </Layers>
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeKey="$parent" x="0" y="0"/>
+                        </Anchors>
+                    </Frame>
+
+                    <!-- PlayerName -->
+                    <Frame parentKey="PlayerName" inherits="PreviewModuleTemplate">
+                        <Size x="0" y="0"/>
+                        <Layers>
+                            <Layer level="OVERLAY">
+                                <FontString text="PlayerName" inherits="GameFontNormal">
+                                    <Anchors>
+                                        <Anchor point="TOPLEFT" relativeKey="$parent" x="19" y="-16"/>
+                                    </Anchors>
+                                </FontString>
+                            </Layer>
+                        </Layers>
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeKey="$parent" x="0" y="0"/>
+                        </Anchors>
+                    </Frame>
+
+                    <!-- PlayerLevel -->
+                    <Frame parentKey="PlayerLevel" inherits="PreviewModuleTemplate">
+                        <Size x="0" y="0"/>
+                        <Layers>
+                            <Layer level="OVERLAY">
+                                <FontString text="80" inherits="GameFontNormal">
+                                    <Anchors>
+                                        <Anchor point="TOPRIGHT" relativeKey="$parent" x="-20" y="-17"/>
+                                    </Anchors>
+                                </FontString>
+                            </Layer>
+                        </Layers>
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeKey="$parent" x="0" y="0"/>
+                        </Anchors>
+                    </Frame>
+                </Frames>
+            </Frame>
+        </Frames>
     </Frame>
 </Ui>
