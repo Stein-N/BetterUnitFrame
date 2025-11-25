@@ -55,3 +55,8 @@ BufMedia = {
         bottom = 0.5546875
     }
 }
+
+function BufMedia.GetTexCoords(name)
+    local tex = BufMedia[name]
+    return tex.left, tex.right, tex.top, tex.bottom
+end

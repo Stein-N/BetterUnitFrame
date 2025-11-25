@@ -104,7 +104,7 @@ function BufMenu:BuildOptionsMenu()
     end
 
     -- == General Tab == --
-    local tInit = Settings.CreatePanelInitializer("UnitFramePreviewTemplate", {})
+    local tInit = Settings.CreatePanelInitializer("PlayerUnitFramePreviewTemplate", {})
     tLayout:AddInitializer(tInit)
 
     Settings.RegisterAddOnCategory(general)

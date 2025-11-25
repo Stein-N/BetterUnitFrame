@@ -13,7 +13,8 @@ Media/BufMedia.lua
 Mixins/TestMixin.lua
 
 ## Templates
-Templates/PreviewTemplates.xml
+Templates/PreviewModuleTemplate.xml
+Templates/PlayerUnitFramePreviewTemplate.xml
 
 ## Data
 Data/FrameData.lua

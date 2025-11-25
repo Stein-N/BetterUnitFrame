@@ -1,0 +1,9 @@
+<Ui>
+    <Frame name="PreviewModuleTemplate" virtual="true" inherits="BackdropTemplate" mixin="PreviewModuleMixin">
+        <Size x="200" y="71"/>
+
+        <Anchors>
+            <Anchor point="CENTER" x="0" y="0"/>
+        </Anchors>
+    </Frame>
+</Ui>
