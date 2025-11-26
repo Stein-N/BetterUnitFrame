@@ -1,0 +1,2 @@
+BufSettings = {}
+local langCode = GetLocale()
