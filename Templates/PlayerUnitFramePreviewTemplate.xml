@@ -270,6 +270,32 @@
                             <Anchor point="TOPLEFT" relativeKey="$parent" x="64" y="-6"/>
                         </Anchors>
                     </Frame>
+
+                    <!-- Ready Check -->
+                    <Frame parentKey="ReadyCheck" inherits="PreviewModuleTemplate">
+                        <Size x="40" y="40"/>
+                        <Layers>
+                            <Layer level="BACKGROUND">
+                                <Texture parentKey="Left" file="Interface\raidframe\readycheck-waiting"/>
+                            </Layer>
+                        </Layers>
+                        <Anchors>
+                            <Anchor point="CENTER" relativeKey="$parent.PlayerPortrait"/>
+                        </Anchors>
+                    </Frame>
+
+                    <!-- Role Icon -->
+                    <Frame parentKey="RoleIcon" inherits="PreviewModuleTemplate">
+                        <Size x="12" y="12"/>
+                        <Layers>
+                            <Layer level="BACKGROUND">
+                                <Texture parentKey="Left" atlas="roleicon-tiny-dps"/>
+                            </Layer>
+                        </Layers>
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" relativeKey="$parent" x="-24.5" y="-28"/>
+                        </Anchors>
+                    </Frame>
                 </Frames>
             </Frame>
         </Frames>
