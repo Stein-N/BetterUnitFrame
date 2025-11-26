@@ -2,8 +2,7 @@ PlayerUnitFramePreviewMixin = {}
 PUM = PlayerUnitFramePreviewMixin
 
 function PUM:OnShow()
-    -- _G["PlayerUnitFramePreview"] = self
-    -- print(self:GetChildren(1):GetNumChildren())
+    _G["PlayerUnitFramePreview"] = self.PlayerUnitFramePreview
 end
 
 function PUM:OnHide()

@@ -67,7 +67,7 @@
                                 <Size x="0" y="0"/>
                                 <Layers>
                                     <Layer level="OVERLAY">
-                                        <FontString text="128K / 128K" inherits="TextStatusBarText">
+                                        <FontString parentKey="Text" text="128K / 128K" inherits="TextStatusBarText">
                                             <Anchors>
                                                 <Anchor point="CENTER" relativeKey="$parent"/>
                                             </Anchors>
@@ -99,7 +99,7 @@
                                 <Size x="0" y="0"/>
                                 <Layers>
                                     <Layer level="OVERLAY">
-                                        <FontString text="100 / 100" inherits="TextStatusBarText" scale="1">
+                                        <FontString parentKey="Text" text="100 / 100" inherits="TextStatusBarText" scale="1">
                                             <Anchors>
                                                 <Anchor point="CENTER" relativeKey="$parent"/>
                                             </Anchors>
@@ -118,7 +118,7 @@
                         <Size x="0" y="0"/>
                         <Layers>
                             <Layer level="OVERLAY">
-                                <FontString text="Name" inherits="GameFontNormal">
+                                <FontString parentKey="Text" text="Name" inherits="GameFontNormal">
                                     <Anchors>
                                         <Anchor point="TOPLEFT" relativeKey="$parent" x="88" y="-27"/>
                                     </Anchors>
@@ -135,7 +135,7 @@
                         <Size x="0" y="0"/>
                         <Layers>
                             <Layer level="OVERLAY">
-                                <FontString text="80" inherits="GameFontNormal">
+                                <FontString parentKey="Text" text="80" inherits="GameFontNormal">
                                     <Anchors>
                                         <Anchor point="TOPRIGHT" relativeKey="$parent" x="-24.5" y="-28"/>
                                     </Anchors>
