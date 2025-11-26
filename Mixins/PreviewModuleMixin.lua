@@ -5,16 +5,10 @@ function PM:OnShow()
 
 end
 
-function PM:OnMouseDown()
-    print("clicked")
-end
-
-function PM:UpdateModule()
-
-end
-
 function PM:BuildSettings(category)
-
+    if not self.isBuilt then
+        
+    end
 end
 
 function PM:ShowSettings()

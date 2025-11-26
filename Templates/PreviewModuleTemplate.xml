@@ -6,7 +6,6 @@
 
         <Scripts>
             <OnShow method="OnShow"/>
-            <OnMouseDown method="OnMouseDown"/>
         </Scripts>
         <Anchors>
             <Anchor point="CENTER" relativeKey="$parent"/>

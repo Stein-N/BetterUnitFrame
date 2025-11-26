@@ -29,7 +29,7 @@
                 <Frames>
                     <!-- Background for UniFrame Texture -->
                     <Frame parentKey="FrameBackground" inherits="PreviewModuleTemplate">
-                        <Size x="200" y="71"/>
+                        <Size x="198" y="71"/>
                         <Layers>
                             <Layer level="BACKGROUND">
                                 <Texture parentKey="Texture" file="Interface\AddOns\BetterUnitFrame\Media\No-Portrait-Atlas">

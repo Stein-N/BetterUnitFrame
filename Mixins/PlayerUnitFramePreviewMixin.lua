@@ -2,7 +2,7 @@ PlayerUnitFramePreviewMixin = {}
 PUM = PlayerUnitFramePreviewMixin
 
 function PUM:OnShow()
-    
+
 end
 
 function PUM:OnHide()
