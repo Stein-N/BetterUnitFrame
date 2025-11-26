@@ -16,3 +16,12 @@ frame:RegisterEvent("PLAYER_SPECIALIZATION_CHANGED")
 frame:SetScript("OnEvent", function(self, event, ...)
     BufEvents:OnEvent(event, ...)
 end)
+
+function PrintInfo(element)
+    element:Show()
+    print("point: ", element:GetPoint())
+    print("Size: ", element:GetSize())
+    print("Scale: ", element:GetScale())
+end
+
+PrintInfo(PlayerFrameIcons.rest_loop)

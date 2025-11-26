@@ -138,14 +138,14 @@ end
 --- ###                 Module Function Hooks                  ### ---
 --- ############################################################## ---
 
-hooksecurefunc("UnitFrameHealthBar_OnUpdate", function(self)
-    local health = UnitHealth("player")
-    local perc = UnitHealthPercent("player", false, true)
+-- hooksecurefunc("UnitFrameHealthBar_OnUpdate", function(self)
+--     local health = UnitHealth("player")
+--     local perc = UnitHealthPercent("player", false, true)
 
-    PlayerFrameText.health_bar_text:SetText(tostring(health) .. " - " .. string.format("%.0f", perc) .. "%")
-end)
+--     PlayerFrameText.health_bar_text:SetText(tostring(health) .. " - " .. string.format("%.0f", perc) .. "%")
+-- end)
 
-hooksecurefunc("UnitFrameManaBar_OnUpdate", function(self)
-    local power = UnitPower("player")
-    PlayerFrameText.mana_bar_text:SetText(tostring(power))
-end)
+-- hooksecurefunc("UnitFrameManaBar_OnUpdate", function(self)
+--     local power = UnitPower("player")
+--     PlayerFrameText.mana_bar_text:SetText(tostring(power))
+-- end)
