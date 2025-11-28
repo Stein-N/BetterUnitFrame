@@ -23,7 +23,7 @@
         </Layers>
 
         <Frames>
-            <Frame parentKey="PlayerUnitFramePreview" inherits="PreviewModuleTemplate" scale="1.5">
+            <Frame parentKey="PlayerUnitFramePreview" name="PlayerFrame" inherits="PreviewModuleTemplate" scale="1.5">
                 <Size x="232" y="100"/>
                 <Frames>
                     <!-- Background for UniFrame Texture -->
@@ -37,7 +37,7 @@
                     </Frame>
 
                     <!-- Player Portrait -->
-                     <Frame parentKey="PlayerPortrait" inherits="PreviewModuleTemplate" frameLevel="LOW">
+                     <Frame parentKey="PlayerPortrait" name="PlayerPortrait" inherits="PreviewModuleTemplate" frameLevel="LOW">
                         <Size x="60" y="60"/>
                         <Layers>
                             <Layer level="ARTWORK">
@@ -50,7 +50,7 @@
                      </Frame>
 
                     <!-- Health Bar -->
-                    <Frame parentKey="HealthBar" inherits="PreviewModuleTemplate">
+                    <Frame parentKey="HealthBar" name="HealthBar" inherits="PreviewModuleTemplate">
                         <Size x="124" y="20"/>
                         <Layers>
                             <Layer level="BACKGHROUND">
@@ -63,7 +63,7 @@
 
                         <Frames>
                             <!-- Health Text -->
-                            <Frame parentKey="UnitHealth" inherits="PreviewModuleTemplate">
+                            <Frame parentKey="UnitHealth" name="HealthBarText" inherits="PreviewModuleTemplate">
                                 <Size x="0" y="0"/>
                                 <Layers>
                                     <Layer level="OVERLAY">
@@ -83,7 +83,7 @@
 
 
                     <!-- Mana Bar-->
-                    <Frame parentKey="ManaBar" inherits="PreviewModuleTemplate">
+                    <Frame parentKey="ManaBar" name="ManaBar" inherits="PreviewModuleTemplate">
                         <Size x="124" y="10"/>
                         <Layers>
                             <Layer level="BACKGHROUND">
@@ -95,7 +95,7 @@
                         </Anchors>
                         <Frames>
                             <!-- Mana Text -->
-                            <Frame parentKey="UnitPower" inherits="PreviewModuleTemplate">
+                            <Frame parentKey="UnitPower" name="ManaBarText" inherits="PreviewModuleTemplate">
                                 <Size x="0" y="0"/>
                                 <Layers>
                                     <Layer level="OVERLAY">
@@ -114,7 +114,7 @@
                     </Frame>
 
                     <!-- PlayerName -->
-                    <Frame parentKey="PlayerName" inherits="PreviewModuleTemplate">
+                    <Frame parentKey="PlayerName" name="PlayerName" inherits="PreviewModuleTemplate">
                         <Size x="0" y="0"/>
                         <Layers>
                             <Layer level="OVERLAY">
@@ -131,7 +131,7 @@
                     </Frame>
 
                     <!-- PlayerLevel -->
-                    <Frame parentKey="PlayerLevel" inherits="PreviewModuleTemplate">
+                    <Frame parentKey="PlayerLevel" name="PlayerName" inherits="PreviewModuleTemplate">
                         <Size x="0" y="0"/>
                         <Layers>
                             <Layer level="OVERLAY">
@@ -150,7 +150,7 @@
                     <!-- Context Icons -->
 
                     <!-- Portrait Corner Icon -->
-                    <Frame parentKey="PortraitCorner" inherits="PreviewModuleTemplate">
+                    <Frame parentKey="PortraitCorner" name="PortraitContainer" inherits="PreviewModuleTemplate">
                         <Size x="23" y="23"/>
                         <Layers>
                             <Layer level="ARTWORK">
@@ -163,7 +163,7 @@
                     </Frame>
 
                     <!-- AttackIcon -->
-                    <Frame parentKey="AttackIcon" inherits="PreviewModuleTemplate">
+                    <Frame parentKey="AttackIcon" name="AttackIcon" inherits="PreviewModuleTemplate">
                         <Size x="16" y="16"/>
                         <Layers>
                             <Layer level="ARTWORK">
@@ -176,7 +176,7 @@
                     </Frame>
 
                     <!-- GroupIndicator -->
-                    <Frame parentKey="GroupIndicator" inherits="PreviewModuleTemplate">
+                    <Frame parentKey="GroupIndicator" name="GroupIndicator" inherits="PreviewModuleTemplate">
                         <Size x="74" y="16"/>
                         <Layers>
                             <Layer level="BACKGROUND">
@@ -188,7 +188,7 @@
                         </Anchors>
                         <Frames>
                             <!-- GroupText -->
-                            <Frame parentKey="GroupText" inherits="PreviewModuleTemplate">
+                            <Frame parentKey="GroupText" name="GroupText" inherits="PreviewModuleTemplate">
                                 <Size x="0" y="0"/>
                                 <Layers>
                                     <Layer level="OVERLAY">
@@ -207,7 +207,7 @@
                     </Frame>
 
                     <!-- Guide Icon -->
-                    <Frame parentKey="GuideIcon" inherits="PreviewModuleTemplate">
+                    <Frame parentKey="GuideIcon" name="GuideIcon" inherits="PreviewModuleTemplate">
                         <Size x="16" y="16"/>
                         <Layers>
                             <Layer level="ARTWORK">
@@ -220,7 +220,7 @@
                     </Frame>
 
                     <!-- Leader Icon -->
-                    <Frame parentKey="LeaderIcon" inherits="PreviewModuleTemplate">
+                    <Frame parentKey="LeaderIcon" name="LeaderIcon" inherits="PreviewModuleTemplate">
                         <Size x="16" y="16"/>
                         <Layers>
                             <Layer level="ARTWORK">
@@ -233,7 +233,7 @@
                     </Frame>
 
                     <!-- PvP Icon -->
-                    <Frame parentKey="PvPIcon" inherits="PreviewModuleTemplate">
+                    <Frame parentKey="PvPIcon" name="PvPIcon" inherits="PreviewModuleTemplate">
                         <Size x="44" y="44"/>
                         <Layers>
                             <Layer level="ARTWORK">
@@ -246,7 +246,7 @@
                     </Frame>
 
                     <!-- Play Time Icon -->
-                    <Frame parentKey="PlayTimeIcon" inherits="PreviewModuleTemplate">
+                    <Frame parentKey="PlayTimeIcon" name="PlayTimeIcon" inherits="PreviewModuleTemplate">
                         <Size x="29" y="29"/>
                         <Layers>
                             <Layer level="ARTWORK">
@@ -259,7 +259,7 @@
                     </Frame>
 
                     <!-- Rest Loop Icon -->
-                    <Frame parentKey="RestLoop" inherits="PreviewModuleTemplate">
+                    <Frame parentKey="RestLoop" name="RestLoop" inherits="PreviewModuleTemplate">
                         <Size x="20" y="20"/>
                         <Layers>
                             <Layer level="BACKGROUND">
@@ -272,7 +272,7 @@
                     </Frame>
 
                     <!-- Ready Check -->
-                    <Frame parentKey="ReadyCheck" inherits="PreviewModuleTemplate">
+                    <Frame parentKey="ReadyCheck" name="ReadyCheck" inherits="PreviewModuleTemplate">
                         <Size x="40" y="40"/>
                         <Layers>
                             <Layer level="BACKGROUND">
@@ -285,7 +285,7 @@
                     </Frame>
 
                     <!-- Role Icon -->
-                    <Frame parentKey="RoleIcon" inherits="PreviewModuleTemplate">
+                    <Frame parentKey="RoleIcon" name="RoleIcon" inherits="PreviewModuleTemplate">
                         <Size x="12" y="12"/>
                         <Layers>
                             <Layer level="BACKGROUND">

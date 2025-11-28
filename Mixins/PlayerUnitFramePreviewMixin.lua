@@ -3,6 +3,10 @@ PUM = PlayerUnitFramePreviewMixin
 
 function PUM:OnShow()
     _G["PlayerUnitFramePreview"] = self.PlayerUnitFramePreview
+
+    if self:GetNumChildren() > 0 then
+        PUM:Iterate(self)
+    end
 end
 
 function PUM:OnHide()
@@ -22,4 +26,19 @@ function PUM:OnMouseWheel(delta)
 
         preview:SetScale(scale)
     end
+end
+
+function PUM:Iterate(element)
+    local children = { element:GetChildren() }
+    for _, child in ipairs(children) do
+        PUM:PrintName(child)
+    end
+end
+
+function PUM:PrintName(element)
+    if element:GetNumChildren() > 0 then
+        PUM:Iterate(element)
+    end
+
+    print(element:GetName())
 end
