@@ -60,29 +60,22 @@
                         <Anchors>
                             <Anchor point="TOPLEFT" relativeKey="$parent" x="85" y="-40"/>
                         </Anchors>
-
-                        <Frames>
-                            <!-- Health Text -->
-                            <Frame parentKey="UnitHealth" name="HealthBarText" inherits="PreviewModuleTemplate">
-                                <Size x="0" y="0"/>
-                                <Layers>
-                                    <Layer level="OVERLAY">
-                                        <FontString parentKey="Text" text="128K / 128K" inherits="TextStatusBarText">
-                                            <Anchors>
-                                                <Anchor point="CENTER" relativeKey="$parent"/>
-                                            </Anchors>
-                                        </FontString>
-                                    </Layer>
-                                </Layers>
-                                <Anchors>
-                                    <Anchor point="TOPLEFT" relativeKey="$parent" x="0" y="0"/>
-                                </Anchors>
-                            </Frame>
-                        </Frames>
                     </Frame>
 
+                    <!-- Health Text -->
+                    <Frame parentKey="HealthBarText" name="HealthBarText" inherits="PreviewModuleTemplate">
+                        <Size x="1" y="1"/>
+                        <Layers>
+                            <Layer level="OVERLAY">
+                                <FontString parentKey="Text" text="128K / 128K" inherits="TextStatusBarText"/>
+                            </Layer>
+                        </Layers>
+                        <Anchors>
+                            <Anchor point="CENTER" relativeKey="$parent.HealthBar"/>
+                        </Anchors>
+                    </Frame>
 
-                    <!-- Mana Bar-->
+                    <!-- Mana Bar -->
                     <Frame parentKey="ManaBar" name="ManaBar" inherits="PreviewModuleTemplate">
                         <Size x="124" y="10"/>
                         <Layers>
@@ -93,57 +86,52 @@
                         <Anchors>
                             <Anchor point="TOPLEFT" relativeKey="$parent" x="85" y="-61"/>
                         </Anchors>
-                        <Frames>
-                            <!-- Mana Text -->
-                            <Frame parentKey="UnitPower" name="ManaBarText" inherits="PreviewModuleTemplate">
-                                <Size x="0" y="0"/>
-                                <Layers>
-                                    <Layer level="OVERLAY">
-                                        <FontString parentKey="Text" text="100 / 100" inherits="TextStatusBarText" scale="1">
-                                            <Anchors>
-                                                <Anchor point="CENTER" relativeKey="$parent"/>
-                                            </Anchors>
-                                        </FontString>
-                                    </Layer>
-                                </Layers>
-                                <Anchors>
-                                    <Anchor point="TOPLEFT" relativeKey="$parent" x="0" y="0"/>
-                                </Anchors>
-                            </Frame>
-                        </Frames>
+                    </Frame>
+                    
+                    <!-- Mana Bar Text -->
+                    <Frame parentKey="ManaBarText" name="ManaBarText" inherits="PreviewModuleTemplate">
+                        <Size x="1" y="1"/>
+                        <Layers>
+                            <Layer level="OVERLAY">
+                                <FontString parentKey="Text" text="100 / 100" inherits="TextStatusBarText"/>
+                            </Layer>
+                        </Layers>
+                        <Anchors>
+                            <Anchor point="CENTER" relativeKey="$parent.ManaBar"/>
+                        </Anchors>
                     </Frame>
 
                     <!-- PlayerName -->
                     <Frame parentKey="PlayerName" name="PlayerName" inherits="PreviewModuleTemplate">
-                        <Size x="0" y="0"/>
+                        <Size x="1" y="1"/>
                         <Layers>
                             <Layer level="OVERLAY">
                                 <FontString parentKey="Text" text="Name" inherits="GameFontNormal">
                                     <Anchors>
-                                        <Anchor point="TOPLEFT" relativeKey="$parent" x="88" y="-27"/>
+                                        <Anchor point="TOPLEFT"/>
                                     </Anchors>
                                 </FontString>
                             </Layer>
                         </Layers>
                         <Anchors>
-                            <Anchor point="TOPLEFT" relativeKey="$parent" x="0" y="0"/>
+                            <Anchor point="TOPLEFT" relativeKey="$parent" x="88" y="-27"/>
                         </Anchors>
                     </Frame>
 
                     <!-- PlayerLevel -->
                     <Frame parentKey="PlayerLevel" name="PlayerName" inherits="PreviewModuleTemplate">
-                        <Size x="0" y="0"/>
+                        <Size x="1" y="1"/>
                         <Layers>
                             <Layer level="OVERLAY">
                                 <FontString parentKey="Text" text="80" inherits="GameFontNormal">
                                     <Anchors>
-                                        <Anchor point="TOPRIGHT" relativeKey="$parent" x="-24.5" y="-28"/>
+                                        <Anchor point="TOPRIGHT"/>
                                     </Anchors>
                                 </FontString>
                             </Layer>
                         </Layers>
                         <Anchors>
-                            <Anchor point="TOPLEFT" relativeKey="$parent" x="0" y="0"/>
+                            <Anchor point="TOPRIGHT" relativeKey="$parent" x="-24.5" y="-28"/>
                         </Anchors>
                     </Frame>
 
@@ -187,23 +175,25 @@
                             <Anchor point="BOTTOMRIGHT" relativeKey="$parent" relativePoint="TOPLEFT" x="210" y="-29"/>
                         </Anchors>
                         <Frames>
-                            <!-- GroupText -->
-                            <Frame parentKey="GroupText" name="GroupText" inherits="PreviewModuleTemplate">
-                                <Size x="0" y="0"/>
-                                <Layers>
-                                    <Layer level="OVERLAY">
-                                        <FontString text="Group 1" inherits="TextStatusBarText">
-                                            <Anchors>
-                                                <Anchor point="CENTER" relativeKey="$parent"/>
-                                            </Anchors>
-                                        </FontString>
-                                    </Layer>
-                                </Layers>
-                                <Anchors>
-                                    <Anchor point="TOPLEFT" relativeKey="$parent"/>
-                                </Anchors>
-                            </Frame>
+
                         </Frames>
+                    </Frame>
+
+                    <!-- GroupText -->
+                    <Frame parentKey="GroupText" name="GroupText" inherits="PreviewModuleTemplate">
+                        <Size x="1" y="1"/>
+                        <Layers>
+                            <Layer level="OVERLAY">
+                                <FontString text="Group 1" inherits="TextStatusBarText">
+                                    <Anchors>
+                                        <Anchor point="CENTER"/>
+                                    </Anchors>
+                                </FontString>
+                            </Layer>
+                        </Layers>
+                        <Anchors>
+                            <Anchor point="CENTER" relativeKey="$parent.GroupIndicator"/>
+                        </Anchors>
                     </Frame>
 
                     <!-- Guide Icon -->

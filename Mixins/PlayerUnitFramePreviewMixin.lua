@@ -4,9 +4,15 @@ PUM = PlayerUnitFramePreviewMixin
 function PUM:OnShow()
     _G["PlayerUnitFramePreview"] = self.PlayerUnitFramePreview
 
-    if self:GetNumChildren() > 0 then
-        PUM:Iterate(self)
+    if self.GetElementData then
+        local test = self:GetElementData().data.testdata
+
+        if test then print(test) end
     end
+
+    -- if self:GetNumChildren() > 0 then
+    --     PUM:Iterate(self)
+    -- end
 end
 
 function PUM:OnHide()
