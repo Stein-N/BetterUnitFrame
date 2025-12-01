@@ -4,10 +4,24 @@
 ## Author: xStopho
 ## Category: UI
 ## Notes: Change the appearence of Vanilla Unit Frames
-## SavedVariables: Buf_Settings
+## SavedVariables: BetterUnitFrameSettings, BetterUnitFrameProifiles
 
 ## Media
 Media/BufMedia.lua
+
+## Utils
+Events/BufEvents.lua
+Utils/BufUtils.lua
+
+## Data
+Data/FrameData.lua
+Data/ClassData.lua
+Data/BufData.lua
+
+## Settings
+Settings/Options.lua
+Settings/PlayerFrameMenu.lua
+Settings/BufSettings.lua
 
 ## Mixins
 Mixins/PreviewModuleMixin.lua
@@ -16,16 +30,6 @@ Mixins/PlayerUnitFramePreviewMixin.lua
 ## Templates
 Templates/PreviewModuleTemplate.xml
 Templates/PlayerUnitFramePreviewTemplate.xml
-
-## Data
-Data/FrameData.lua
-Data/ClassData.lua
-Data/BufData.lua
-
-## Utils
-Settings/BufMenu.lua
-Events/BufEvents.lua
-Utils/BufUtils.lua
 
 ## Modules
 Modules/BaseModule.lua

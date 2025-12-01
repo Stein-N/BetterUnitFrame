@@ -1,7 +1,10 @@
 -- ===================================== --
 -- ==         Saved Variables         == --
 -- ===================================== --
-Buf_Settings = {}
+BetterUnitFrameSettings = {}
+BetterUnitFrameProifiles = {}
+BUFS = BetterUnitFrameSettings
+BUP = BetterUnitFrameProifiles
 
 
 -- ===================================== --

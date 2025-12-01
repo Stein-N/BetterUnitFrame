@@ -8,7 +8,7 @@ end
 
 function handler.ADDON_LOADED(name)
     if name == BufData.addon_name then
-        BufMenu:BuildOptionsMenu()
+        BufSettings.InitializeMenu()
     end
 end
 
