@@ -27,12 +27,6 @@ function BufSettings.CreateSubMenu(name, template)
         layout = layout
     }
 
-    -- TODO: Remove 
-    SLASH_BETTERUNITFRAME1 = "/buf"
-    SlashCmdList["BETTERUNITFRAME"] = function(msg)
-        Settings.OpenToCategory(category:GetID())
-    end
-
     layout:AddInitializer(initializer)
 end
 
@@ -42,7 +36,7 @@ function BufSettings.UpdateSetting(setting, value)
     end
 end
 
-function BufSettings.CreateSetting(category, key)
+function BufSettings.CreateSetting(category, key, func)
     local option = Options[key]
     local lang = option[langCode] or option.enEN
 
@@ -50,17 +44,17 @@ function BufSettings.CreateSetting(category, key)
         local setting = Settings.RegisterAddOnSetting(category, option.key,
         option.key, BUFS, type(option.default), lang.name, option.default)
 
-        setting:SetValueChangedCallback(BufSettings.UpdateSetting)
+        setting:SetValueChangedCallback(func)
 
         return setting, lang
     end
 end
 
-function BufSettings.CreateCheckbox(category, key)
-    local s, l = BufSettings.CreateSetting(category, key)
+function BufSettings.CreateCheckbox(category, key, func)
+    local s, l = BufSettings.CreateSetting(category, key, func)
 
     if s and l then
-        Settings.CreateCheckbox(category, s, l.tooltip)
+        return Settings.CreateCheckbox(category, s, l.tooltip)
     end
 end
 
@@ -73,21 +67,21 @@ function BufSettings.CreateCheckboxWithButton(category, key, func, req, layout)
     end
 end
 
-function BufSettings.CreateDropdown(category, key, func)
-    local s, l = BufSettings.CreateSetting(category, key)
+function BufSettings.CreateDropdown(category, key, updateFunc, optionFunc)
+    local s, l = BufSettings.CreateSetting(category, key, updateFunc)
     if s and l then
-        Settings.CreateDropdown(category, s, func, l.tooltip)
+        return Settings.CreateDropdown(category, s, optionFunc, l.tooltip)
     end
 end
 
-function BufSettings.CreateSlider(category, key, min, max, steps, suffix)
-    local s, l = BufSettings.CreateSetting(category, key)
+function BufSettings.CreateSlider(category, key, min, max, steps, suffix, func)
+    local s, l = BufSettings.CreateSetting(category, key, func)
     local values = Settings.CreateSliderOptions(min, max, steps)
     values:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(v)
         return v .. (suffix or "")
     end)
 
-    Settings.CreateSlider(category, s, values, l.tooltip)
+    return Settings.CreateSlider(category, s, values, l.tooltip)
 end
 
 function BufSettings.InitializeMenu()
