@@ -18,7 +18,8 @@ function BuildPlayerFrameMenu(category, layout)
     -- Selection
     dropdown = BufSettings.CreateDropdown(category, "testBoolean1", UpdatePlayerFrameOptions, BuildPlayerFrameModuleoptions)
     slider = BufSettings.CreateSlider(category, "testSlider", 0, 100, 1, "", function(s, v)
-        print(v)
+        local dValue = dropdown:GetSetting():GetValue()
+        test[dValue] = v
     end)
 
     SLASH_BETTERUNITFRAME1 = "/buf"
