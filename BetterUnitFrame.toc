@@ -4,7 +4,7 @@
 ## Author: xStopho
 ## Category: UI
 ## Notes: Change the appearence of Vanilla Unit Frames
-## SavedVariables: BetterUnitFrameSettings, BetterUnitFrameProifiles
+## SavedVariables: BetterUnitFrameSettings
 
 ## Media
 Media/BufMedia.lua
@@ -16,6 +16,7 @@ Events/BufEvents.lua
 Data/BufData.lua
 
 ## Settings
+Settings/SettingsMenu.lua
 
 ## Mixins
 
