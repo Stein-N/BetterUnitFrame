@@ -1,10 +1,6 @@
 -- ===================================== --
 -- ==         Saved Variables         == --
 -- ===================================== --
-BetterUnitFrameSettings = {}
-BetterUnitFrameProifiles = {}
-BUFS = BetterUnitFrameSettings
-BUP = BetterUnitFrameProifiles
 
 
 -- ===================================== --
@@ -26,5 +22,3 @@ function PrintInfo(element)
     print("Size: ", element:GetSize())
     print("Scale: ", element:GetScale())
 end
-
-PrintInfo(PlayerFrameIcons.rest_loop)
