@@ -42,7 +42,7 @@ function SM.CreateSlider(category, key, min, max, step, suffix, updateFunction)
         return v .. (suffix or "")
     end)
 
-    Settings.CreateSlider(category, s, val, l.tooltip)
+    return Settings.CreateSlider(category, s, val, l.tooltip)
 end
 
 function SM.CreateCheckboxWithButton(category, key, updateFunc, btnFunc, req)
@@ -59,7 +59,15 @@ function SM.InitMenu()
 
     local cat, lay = Settings.RegisterVerticalLayoutSubcategory(BufSettingsMenu, "Test Menu")
 
-    SM.CreateSlider(cat, "testSlider", 0, 100, 5, "%", function(s, v) BetterUnitFrameSettings[s:GetVariable()] = v end)
+    local disabled = false
+    local t = SM.CreateCheckbox(cat, "testBoolean", function(s, v)
+        BetterUnitFrameSettings[s:GetVariable()] = v
+        if disabled then disabled = false else disabled = true end
+    end)
+
+    local slider = SM.CreateSlider(cat, "testSlider", 0, 100, 5, "%", function(s, v) BetterUnitFrameSettings[s:GetVariable()] = v end)
+    slider:AddModifyPredicate(function() return disabled end)
+
 
     Settings.RegisterAddOnCategory(BufSettingsMenu)
 end

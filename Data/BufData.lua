@@ -11,4 +11,20 @@ BufSettings = {
             tooltip = "Change the space between the items and the frame border."
         }
     },
+    testBoolean = {
+        key = "testBoolean",
+        default = true,
+        enEN = {
+            name = "Border Padding",
+            tooltip = "Change the space between the items and the frame border."
+        }
+    },
+    testBoolean1 = {
+        key = "TestBoolean1",
+        default = false,
+        enEN = {
+            name = "Border Padding",
+            tooltip = "Change the space between the items and the frame border."
+        }
+    },
 }
