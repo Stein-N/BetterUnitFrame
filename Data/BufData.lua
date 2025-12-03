@@ -12,7 +12,7 @@ BufSettings = {
         }
     },
     testBoolean = {
-        key = "testBoolean",
+        key = "TestBoolean",
         default = true,
         enEN = {
             name = "Border Padding",

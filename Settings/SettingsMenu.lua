@@ -41,8 +41,7 @@ function SM.CreateSlider(category, key, min, max, step, suffix, updateFunction)
     val:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(v)
         return v .. (suffix or "")
     end)
-
-    return Settings.CreateSlider(category, s, val, l.tooltip)
+    return Settings.CreateSliderInitializer(s, val, l.tooltip)
 end
 
 function SM.CreateCheckboxWithButton(category, key, updateFunc, btnFunc, req)
@@ -54,20 +53,27 @@ function SM.CreateCheckboxWithButton(category, key, updateFunc, btnFunc, req)
     end
 end
 
+DisabledSetting = true
 function SM.InitMenu()
     SM.InitSettings()
 
     local cat, lay = Settings.RegisterVerticalLayoutSubcategory(BufSettingsMenu, "Test Menu")
 
     local disabled = false
+
     local t = SM.CreateCheckbox(cat, "testBoolean", function(s, v)
         BetterUnitFrameSettings[s:GetVariable()] = v
-        if disabled then disabled = false else disabled = true end
+        if DisabledSetting then DisabledSetting = false else DisabledSetting = true end
+        SettingsInbound.RepairDisplay()
     end)
 
     local slider = SM.CreateSlider(cat, "testSlider", 0, 100, 5, "%", function(s, v) BetterUnitFrameSettings[s:GetVariable()] = v end)
-    slider:AddModifyPredicate(function() return disabled end)
-
+    slider:SetParentInitializer(t)
+    slider:AddModifyPredicate(function()
+        local val = BetterUnitFrameSettings["TestBoolean"]
+        return val
+     end)
+    lay:AddInitializer(slider)
 
     Settings.RegisterAddOnCategory(BufSettingsMenu)
 end
