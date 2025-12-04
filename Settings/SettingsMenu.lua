@@ -57,23 +57,25 @@ DisabledSetting = true
 function SM.InitMenu()
     SM.InitSettings()
 
-    local cat, lay = Settings.RegisterVerticalLayoutSubcategory(BufSettingsMenu, "Test Menu")
+    PlayerMenuMixin:CreateMenu(Settings.RegisterVerticalLayoutSubcategory(BufSettingsMenu, "Player Frame"))
 
-    local disabled = false
+    -- local cat, lay = Settings.RegisterVerticalLayoutSubcategory(BufSettingsMenu, "Test Menu")
 
-    local t = SM.CreateCheckbox(cat, "testBoolean", function(s, v)
-        BetterUnitFrameSettings[s:GetVariable()] = v
-        if DisabledSetting then DisabledSetting = false else DisabledSetting = true end
-        SettingsInbound.RepairDisplay()
-    end)
+    -- local disabled = false
 
-    local slider = SM.CreateSlider(cat, "testSlider", 0, 100, 5, "%", function(s, v) BetterUnitFrameSettings[s:GetVariable()] = v end)
-    slider:SetParentInitializer(t)
-    slider:AddModifyPredicate(function()
-        local val = BetterUnitFrameSettings["TestBoolean"]
-        return val
-     end)
-    lay:AddInitializer(slider)
+    -- local t = SM.CreateCheckbox(cat, "testBoolean", function(s, v)
+    --     BetterUnitFrameSettings[s:GetVariable()] = v
+    --     if DisabledSetting then DisabledSetting = false else DisabledSetting = true end
+    --     SettingsInbound.RepairDisplay()
+    -- end)
+
+    -- local slider = SM.CreateSlider(cat, "testSlider", 0, 100, 5, "%", function(s, v) BetterUnitFrameSettings[s:GetVariable()] = v end)
+    -- slider:SetParentInitializer(t)
+    -- slider:AddModifyPredicate(function()
+    --     local val = BetterUnitFrameSettings["TestBoolean"]
+    --     return val
+    --  end)
+    -- lay:AddInitializer(slider)
 
     Settings.RegisterAddOnCategory(BufSettingsMenu)
 end

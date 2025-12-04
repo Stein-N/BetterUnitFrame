@@ -1,0 +1,24 @@
+<Ui>
+    <Frame name="FramePreviewTemplate" virtual="true" inherits="InsetFrameTemplate4" mixin="PlayerMenuMixin" enableMouse="true">
+        <Size y="200"/>
+
+        <Scripts>
+            <OnLoad method="OnLoad"/>
+        </Scripts>
+
+        <KeyValues>
+            <KeyValue key="isBuilt" value="false" type="boolean"/>
+            <KeyValue key="focused" value="" type="global"/>
+        </KeyValues>
+
+        <Layers>
+            <Layer level="OVERLAY">
+                <FontString text="Preview" inherits="GameFontNormalOutline">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativeKey="$parent" x="10" y="-10"/>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+    </Frame>
+</Ui>

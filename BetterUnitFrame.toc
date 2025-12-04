@@ -17,12 +17,14 @@ Data/BufData.lua
 
 ## Settings
 Settings/SettingsMenu.lua
+Settings/PlayerMenu.lua
 
 ## Mixins
+Components/BaseComponent.lua
+Components/Player/PlayerFrameComponent.lua
 
 ## Templates
-
-## Modules
+Templates/FramePreviewTemplate.xml
 
 ## Core Logic
 Core.lua
