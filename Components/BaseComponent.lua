@@ -1,18 +1,21 @@
 BaseComponentMixin = {}
 
-function BaseComponentMixin:BuildSettings(category)end
 function BaseComponentMixin:UpdateComponent()end
 
-function BaseComponentMixin:OnLoad()
-    self.isBuilt = false
-    self.isFocused = false
-    self.componentType = nil
-end
-
 function BaseComponentMixin:SetFocus()
-    self.IsFocused = true
+    if not self.isFocused then
+        self.isFocused = true
+        self:SetBackdropBorderColor(1, 1, 1, 1)
+
+        PlayerMenuMixin:SetNewFocus(self)
+
+        SettingsInbound.RepairDisplay()
+    end
 end
 
 function BaseComponentMixin:Unfocus()
-    self.IsFocused = false
+    self.isFocused = false
+    self:SetBackdropBorderColor(1, 1, 1, 0)
+
+    SettingsInbound.RepairDisplay()
 end

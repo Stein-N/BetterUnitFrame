@@ -7,7 +7,15 @@ BufSettings = {
         key = "TestSlider",
         default = 50,
         enEN = {
-            name = "Border Padding",
+            name = "A Test Slider",
+            tooltip = "Change the space between the items and the frame border."
+        }
+    },
+    testSlider1 = {
+        key = "TestSlider1",
+        default = 50,
+        enEN = {
+            name = "A different Slider",
             tooltip = "Change the space between the items and the frame border."
         }
     },

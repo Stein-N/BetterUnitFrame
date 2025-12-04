@@ -1,0 +1,37 @@
+<Ui>
+    <Button name="FrameComponentTemplate" inherits="BackdropTemplate" mixin="BaseComponentMixin" virtual="true" enableMouse="true">
+        <Size x="232" y="100"/>
+
+        <Scripts>
+            <OnLoad>
+                self.isBuilt = false
+                self.isFocused = false
+
+                self.settings = {
+                    slider = 50
+                }
+
+                self:SetBackdrop({
+                    bgFile = nil,
+                    edgeFile = "Interface\\AddOns\\BetterUnitFrame\\Media\\Focus-Border",
+                    tile = "true", tileSize = 16, edgeSize = 16, 
+                    insets = { left = 0, right = 0, top = 0, bottom = 0 } 
+                })
+                self:SetBackdropBorderColor(1, 1, 1, 0)
+            </OnLoad>
+            <OnEnter>
+                if not self.isFocused then
+                    self:SetBackdropBorderColor(1, 1, 1, 0.75)
+                end
+            </OnEnter>
+            <OnLeave>
+                if not self.isFocused then
+                    self:SetBackdropBorderColor(1, 1, 1, 0)
+                end
+            </OnLeave>
+            <OnMouseDown method="SetFocus"/>
+        </Scripts>
+    </Button>
+
+    <Button name="PlayerFrameComponent" inherits="FrameComponentTemplate" mixin="PlayerFrameComponentMixin" virtual="true"/>
+</Ui>

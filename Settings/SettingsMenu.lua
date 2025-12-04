@@ -20,7 +20,7 @@ function SM.CreateSetting(category, key, updateFunction)
     local lang = data[LangCode] or data.enEN
 
     if data and lang then
-        local set = Settings.RegisterAddOnSetting(category, data.key, 
+        local set = Settings.RegisterAddOnSetting(category, data.key,
             data.key, BetterUnitFrameSettings, type(data.default), lang.name, data.default)
         set:SetValueChangedCallback(updateFunction)
 

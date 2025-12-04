@@ -2,9 +2,13 @@
     <Frame name="FramePreviewTemplate" virtual="true" inherits="InsetFrameTemplate4" enableMouse="true">
         <Size y="200"/>
 
+        <Scripts>
+            <OnMouseDown method="OnMouseDown"/>
+        </Scripts>
+
         <Layers>
             <Layer level="OVERLAY">
-                <FontString text="Preview" inherits="GameFontNormalOutline">
+                <FontString text="Preview (Right Click to add/delete Components)" inherits="GameFontNormalOutline">
                     <Anchors>
                         <Anchor point="TOPLEFT" x="10" y="-10"/>
                     </Anchors>

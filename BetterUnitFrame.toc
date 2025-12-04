@@ -24,6 +24,7 @@ Components/BaseComponent.lua
 Components/Player/PlayerFrameComponent.lua
 
 ## Templates
+Templates/FrameComponentTemplate.xml
 Templates/FramePreviewTemplate.xml
 
 ## Core Logic
