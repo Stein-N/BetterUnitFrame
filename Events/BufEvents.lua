@@ -12,11 +12,3 @@ function handler.ADDON_LOADED(name)
         SettingsMenu.InitMenu()
     end
 end
-
-function handler.PLAYER_ENTERING_WORLD()
-    print("Player entered world")
-end
-
-function handler.PLAYER_SPECIALIZATION_CHANGED()
-    print("Player changed Spec")
-end

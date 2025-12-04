@@ -21,13 +21,12 @@ function PlayerMenuMixin:CreateMenu(category, layout)
     end
 end
 
-local function CreateComponent(parent, type, value)
+local function CreateComponent(parent, type)
     local f = CreateFrame("Frame", nil, parent, "PlayerFrameComponent")
     f:SetSize(100, 28)
-    if value == "testSlider" then f:SetPoint("BOTTOMRIGHT", parent, "CENTER", 0, 0)
-    else f:SetPoint("TOPLEFT", parent, "CENTER", 0, 0) end
+    f:SetPoint("CENTER")
 
-    f:BuildSettings(menuCategory, value)
+    f:BuildSettings(menuCategory)
 
     table.insert(components, { frame = f, type = type})
 end
@@ -36,8 +35,7 @@ end
 local function CreateContextMenu(owner, root)
     root:CreateTitle("Components")
     local newBtn = root:CreateButton("New")
-    newBtn:CreateButton("Health Bar", function() CreateComponent(owner, "HealthBar", "testSlider") end)
-    newBtn:CreateButton("Power Bar", function() CreateComponent(owner, "PowerBar", "testSlider1") end)
+    newBtn:CreateButton("PlayerFrame", function() CreateComponent(owner, "PlayerFrame") end)
 
     local delete = root:CreateButton("Delete")
 

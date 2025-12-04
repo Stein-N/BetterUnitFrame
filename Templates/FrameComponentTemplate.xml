@@ -7,10 +7,6 @@
                 self.isBuilt = false
                 self.isFocused = false
 
-                self.settings = {
-                    slider = 50
-                }
-
                 self:SetBackdrop({
                     bgFile = nil,
                     edgeFile = "Interface\\AddOns\\BetterUnitFrame\\Media\\Focus-Border",

@@ -1,0 +1,17 @@
+<Ui>
+    <Frame name="ComponentSettingTemplate" inherits="BackdropTemplate" virtual="true">
+        <Size y="300"/>
+    </Frame>
+
+    <Frame name="PlayerFrameComponentSettings" inherits="ComponentSettingTemplate" virtual="true">
+        <Layers>
+            <Layer level="OVERLAY">
+                <FontString text="Player Frame Settings" inherits="GameFontNormalOutline">
+                    <Anchors>
+                        <Anchor point="TOPLEFT" x="10" y="-10"/>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+    </Frame>
+</Ui>

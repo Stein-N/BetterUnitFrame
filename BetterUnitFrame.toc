@@ -21,9 +21,10 @@ Settings/PlayerMenu.lua
 
 ## Mixins
 Components/BaseComponent.lua
-Components/Player/PlayerFrameComponent.lua
+Components/FrameComponents.lua
 
 ## Templates
+Templates/ComponentSettingTemplate.xml
 Templates/FrameComponentTemplate.xml
 Templates/FramePreviewTemplate.xml
 
