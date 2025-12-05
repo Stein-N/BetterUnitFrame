@@ -17,5 +17,5 @@
         </Layers>
     </Frame>
 
-    <Frame name="PlayerFramePreviewTemplate" inherits="FramePreviewTemplate" mixin="PlayerMenuMixin" virtual="true"/>
+    <Frame name="PlayerFramePreviewTemplate" inherits="FramePreviewTemplate" mixin="PlayerMenu" virtual="true"/>
 </Ui>

@@ -1,15 +1,10 @@
-PlayerMenuMixin = {}
+PlayerMenu = {}
 
 local components = {}
 local menuCategory = nil
-local currentFocus = nil
 
-function PlayerMenuMixin:SetNewFocus(element)
-    if currentFocus then currentFocus:Unfocus() end
-    currentFocus = element
-end
 
-function PlayerMenuMixin:CreateMenu(category, layout)
+function PlayerMenu:Build(category, layout)
     menuCategory = category
 
     local f = Settings.CreatePanelInitializer("PlayerFramePreviewTemplate", {})
@@ -51,7 +46,7 @@ local function CreateContextMenu(owner, root)
     end
 end
 
-function PlayerMenuMixin:OnMouseDown(button)
+function PlayerMenu:OnMouseDown(button)
     if button == "RightButton" then
         MenuUtil.CreateContextMenu(self, CreateContextMenu)
     end

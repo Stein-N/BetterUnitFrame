@@ -7,7 +7,7 @@ function BaseComponentMixin:SetFocus()
         self.isFocused = true
         self:SetBackdropBorderColor(1, 1, 1, 1)
 
-        PlayerMenuMixin:SetNewFocus(self)
+        SettingsMenu:SetComponentFocus(self)
 
         SettingsInbound.RepairDisplay()
     end
