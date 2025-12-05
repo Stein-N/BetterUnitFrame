@@ -4,12 +4,10 @@ function PlayerFrameComponentSettingsMixin:OnLoad()
     self.settings = {}
 
     if not self.isBuilt then
-        SettingsComponents:CreateSlider(self, "Test", -100, 100,
+        SettingsComponents:CreateSlider(self, "Test", 0, 100,
         function(v) return v .. "%" end, function(v) print(v) end)
-        SettingsComponents:CreateSlider(self, "Test", -100, 100,
-        function(v) return v .. "%" end, function(v) print(v) end)
-        SettingsComponents:CreateSlider(self, "Test", -100, 100,
-        function(v) return v .. "%" end, function(v) print(v) end)
+        SettingsComponents:CreateCheckbox(self, "Test Checkbox", function(v) print(v) end)
+
 
         local yPos = 0
         for _, setting in ipairs(self.settings) do
