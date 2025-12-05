@@ -1,6 +1,23 @@
 PlayerFrameComponentSettingsMixin = {}
 
 function PlayerFrameComponentSettingsMixin:OnLoad()
-    local slider = SettingsComponents:CreateSlider(self, "Test", -100, 100,
-    function(v) return v .. "%" end, function(v) print(v) end)
+    self.settings = {}
+
+    if not self.isBuilt then
+        SettingsComponents:CreateSlider(self, "Test", -100, 100,
+        function(v) return v .. "%" end, function(v) print(v) end)
+        SettingsComponents:CreateSlider(self, "Test", -100, 100,
+        function(v) return v .. "%" end, function(v) print(v) end)
+        SettingsComponents:CreateSlider(self, "Test", -100, 100,
+        function(v) return v .. "%" end, function(v) print(v) end)
+
+        local yPos = 0
+        for _, setting in ipairs(self.settings) do
+            if setting then
+                setting:SetPoint("TOPLEFT", self, "TOPLEFT", 30, yPos)
+                setting:SetPoint("RIGHT", self, "RIGHT", -30, yPos)
+                yPos = yPos - setting:GetHeight()
+            end
+        end
+    end
 end

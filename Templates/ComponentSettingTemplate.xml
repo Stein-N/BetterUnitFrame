@@ -1,6 +1,11 @@
 <Ui>
     <Frame name="ComponentSettingTemplate" inherits="BackdropTemplate" virtual="true">
         <Size y="300"/>
+
+        <KeyValues>
+            <KeyValue key="isBuilt" value="false" type="boolean"/>
+        </KeyValues>
+
         <Scripts>
             <OnLoad method="OnLoad"/>
         </Scripts>

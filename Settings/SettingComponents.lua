@@ -3,8 +3,6 @@ SettingsComponents = {}
 function SettingsComponents:CreateSlider(parent, label, min, max, formatter, updateFunc)
   local holder = CreateFrame("Frame", nil, parent)
     holder:SetHeight(40)
-    holder:SetPoint("TOPLEFT", parent, "TOPLEFT", 30, 0)
-    holder:SetPoint("RIGHT", parent, "RIGHT", -30, 0)
 
     holder.Label = holder:CreateFontString(nil, "ARTWORK", "GameFontNormal")
     holder.Label:SetJustifyH("LEFT")
@@ -40,5 +38,5 @@ function SettingsComponents:CreateSlider(parent, label, min, max, formatter, upd
         end
     end)
 
-  return holder
+    table.insert(parent.settings, holder)
 end
