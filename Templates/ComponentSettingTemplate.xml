@@ -11,5 +11,5 @@
         </Scripts>
     </Frame>
 
-    <Frame name="PlayerFrameComponentSettings" inherits="ComponentSettingTemplate" mixin="PlayerFrameComponentSettingsMixin" virtual="true"/>
+    <Frame name="FrameTextureComponentSettings" inherits="ComponentSettingTemplate" mixin="FrameTextureComponentSettingsMixin" virtual="true"/>
 </Ui>

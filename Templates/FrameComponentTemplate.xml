@@ -29,5 +29,5 @@
         </Scripts>
     </Button>
 
-    <Button name="PlayerFrameComponent" inherits="FrameComponentTemplate" mixin="PlayerFrameComponentMixin" virtual="true"/>
+    <Button name="FrameTextureComponent" inherits="FrameComponentTemplate" mixin="FrameTextureComponentMixin" virtual="true"/>
 </Ui>
