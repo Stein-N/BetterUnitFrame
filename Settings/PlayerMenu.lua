@@ -16,8 +16,8 @@ function PlayerMenu:Build(category, layout)
     end
 end
 
-local function CreateComponent(parent, type)
-    local f = CreateFrame("Frame", nil, parent, "FrameTextureComponent")
+local function CreateComponent(parent, type, template)
+    local f = CreateFrame("Frame", nil, parent, template)
     f:SetPoint("CENTER")
 
     f:BuildSettings(menuCategory)
@@ -29,7 +29,8 @@ end
 local function CreateContextMenu(owner, root)
     root:CreateTitle("Components")
     local newBtn = root:CreateButton("New")
-    newBtn:CreateButton("Frame Texture", function() CreateComponent(owner, "FrameTexture") end)
+    newBtn:CreateButton("Frame Texture", function() CreateComponent(owner, "FrameTexture", "FrameTextureComponent") end)
+    newBtn:CreateButton("Healthbar", function() CreateComponent(owner, "Healthbar", "HealthbarComponent") end)
 
     local delete = root:CreateButton("Delete")
 

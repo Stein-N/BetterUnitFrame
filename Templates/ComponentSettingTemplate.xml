@@ -1,5 +1,5 @@
 <Ui>
-    <Frame name="ComponentSettingTemplate" inherits="BackdropTemplate" virtual="true">
+    <Frame name="ComponentSettingTemplate" mixin="BaseComponentSettingsMixin" virtual="true">
         <Size y="300"/>
 
         <KeyValues>
@@ -13,4 +13,5 @@
     </Frame>
 
     <Frame name="FrameTextureComponentSettings" inherits="ComponentSettingTemplate" mixin="FrameTextureComponentSettingsMixin" virtual="true"/>
+    <Frame name="HealthbarComponentSettings" inherits="ComponentSettingTemplate" mixin="HealthbarComponentSettingsMixin" virtual="true"/>
 </Ui>

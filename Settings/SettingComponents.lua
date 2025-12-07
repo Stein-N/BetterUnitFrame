@@ -33,7 +33,7 @@ local function CreateBaseFrame(parent)
     return f
 end
 
-function SettingsComponents:CreateSlider(parent, label, min, max, step, suffix, updateFunc)
+function SettingsComponents:CreateSlider(parent, label, min, max, step, suffix, settingsTable, key)
     local f = CreateBaseFrame(parent)
     f:SetLabel(label)
 
@@ -44,12 +44,12 @@ function SettingsComponents:CreateSlider(parent, label, min, max, step, suffix, 
     f.Slider.Slider:SetScript("OnEnter", function() f:OnEnter() end)
     f.Slider.Slider:SetScript("OnLeave", function() f:OnLeave() end)
 
-    f.Slider:Init(max, min, max, (max - min) / step, {
+    f.Slider:Init(settingsTable[key], min, max, (max - min) / step, {
         [MinimalSliderWithSteppersMixin.Label.Right] = CreateMinimalSliderFormatter(MinimalSliderWithSteppersMixin.Label.Right,
             function(v) return v .. (suffix or "") end)
     })
 
-    f.Slider:RegisterCallback(MinimalSliderWithSteppersMixin.Event.OnValueChanged, function(_, v) updateFunc(v) end)
+    f.Slider:RegisterCallback(MinimalSliderWithSteppersMixin.Event.OnValueChanged, function(_, v) settingsTable[key] = v end)
 
     table.insert(parent.layout, f)
 end
@@ -94,4 +94,20 @@ function SettingsComponents:CreateDropdown(parent, label, items, settingsTable, 
     end)
 
     table.insert(parent.layout, f)
+end
+
+function SettingsComponents:CreateAnchorDropdown()
+    local container = Settings.CreateControlTextContainer()
+
+    container:Add("TOPLEFT", "TOPLEFT")
+    container:Add("LEFT", "LEFT")
+    container:Add("BOTTOMLEFT", "BOTTOMLEFT")
+    container:Add("TOP", "TOP")
+    container:Add("CENTER", "CENTER")
+    container:Add("BOTTOM", "BOTTOM")
+    container:Add("TOPRIGHT", "TOPRIGHT")
+    container:Add("RIGHT", "RIGHT")
+    container:Add("BOTTOMRIGHT", "BOTTOMRIGHT")
+
+    return container
 end

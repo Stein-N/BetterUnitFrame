@@ -44,3 +44,27 @@ function FrameTextureComponentMixin:UpdateComponent()
         self.Texture:SetTexCoord(coord.left, coord.right, coord.top, coord.bottom)
     end
 end
+
+--- ============================== ---
+--- ===        Health bar      === ---
+--- ============================== ---
+HealthbarComponentMixin = CreateFromMixins(BaseComponentMixin)
+
+function HealthbarComponentMixin:BuildSettings(category)
+    if not self.isBuilt then
+        local init = Settings.CreatePanelInitializer("HealthbarComponentSettings", { component = self })
+        init:AddShownPredicate(function() return self.isFocused end)
+        SettingsPanel:GetLayout(category):AddInitializer(init)
+
+        self:UpdateComponent()
+        self.isBuilt = true
+    end
+end
+
+function HealthbarComponentMixin:UpdateComponent()
+    if self.Texture then
+        self.Texture:SetTexture("Interface\\AddOns\\BetterUnitFrame\\Media\\No-Portrait-Atlas")
+        local coord = BufMedia.GetTexCoords(BufComponents.Player.Frame.texture)
+        self.Texture:SetTexCoord(coord.left, coord.right, coord.top, coord.bottom)
+    end
+end

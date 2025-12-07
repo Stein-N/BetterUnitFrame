@@ -17,15 +17,14 @@ function BaseComponentSettingsMixin:UpdateLayout()
         entry:SetPoint("TOPLEFT", self, "TOPLEFT", 30, yPos)
         entry:SetPoint("RIGHT", self, "RIGHT", -30, yPos)
         yPos = yPos - entry:GetHeight()
-
-        if self:GetHeight() <= yPos then
-            self:SetHeight(yPos)
-        end
     end
 end
 
+function BaseComponentSettingsMixin:UpdateComponent()
+    if self.component then self.component:UpdateComponent() end
+end
+
 function BaseComponentSettingsMixin:BuildSettings()end
-function BaseComponentSettingsMixin:UpdateComponent()end
 
 --- ============================== ---
 --- ===      Frame Texture     === ---
@@ -45,6 +44,27 @@ function FrameTextureComponentSettingsMixin:BuildSettings()
     self.isBuilt = true
 end
 
-function FrameTextureComponentSettingsMixin:UpdateComponent()
-    if self.component then self.component:UpdateComponent() end
+--- ============================== ---
+--- ===        HealthBar       === ---
+--- ============================== ---
+HealthbarComponentSettingsMixin = CreateFromMixins(BaseComponentSettingsMixin)
+
+function HealthbarComponentSettingsMixin:BuildSettings()
+    if self.isBuilt then return end
+
+    local options = BufComponents.Player.HealthBar
+    local anchors = SettingsComponents:CreateAnchorDropdown()
+    local textures = Settings.CreateControlTextContainer()
+    textures:Add("health_bar_normal", "Healthbar")
+    textures:Add("health_bar_white", "Healthbar White")
+
+    SettingsComponents:CreateDropdown(self, "Texture", textures:GetData(), options, "texture")
+    SettingsComponents:CreateDropdown(self, "Anchor", anchors:GetData(), options, "anchor")
+    -- SettingsComponents:CreateDropdown(self, "Relative to", anchors:GetData(), "parent")
+    SettingsComponents:CreateDropdown(self, "Realative Anchor", anchors:GetData(), options, "parentAnchor")
+    SettingsComponents:CreateSlider(self, "X Position", -50, 50, 1, "px", options, "xPos")
+    SettingsComponents:CreateSlider(self, "Y Position", -50, 50, 1, "px", options, "yPos")
+
+    self:UpdateLayout()
+    self.isBuilt = true
 end

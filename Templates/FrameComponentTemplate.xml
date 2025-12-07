@@ -36,4 +36,5 @@
     </Button>
 
     <Button name="FrameTextureComponent" inherits="FrameComponentTemplate" mixin="FrameTextureComponentMixin" virtual="true"/>
+    <Button name="HealthbarComponent" inherits="FrameComponentTemplate" mixin="HealthbarComponentMixin" virtual="true"/>
 </Ui>
