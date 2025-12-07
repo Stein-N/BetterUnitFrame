@@ -67,7 +67,7 @@ function SettingsComponents:CreateCheckbox(parent, label, updateFunc)
     table.insert(parent.layout, f)
 end
 
-local function CreateBaseDropdown(parent, label)
+function SettingsComponents:CreateDropdown(parent, label, items, onSelect)
     local f = CreateBaseFrame(parent)
     f:SetLabel(label)
 
@@ -78,38 +78,22 @@ local function CreateBaseDropdown(parent, label)
     f.Dropdown:SetScript("OnEnter", function() f:OnEnter() end)
     f.Dropdown:SetScript("OnLeave", function() f:OnLeave() end)
 
-    return f
-end
-
-function SettingsComponents:CreateDropdown(parent, label, items, onSelect)
-    local f = CreateBaseDropdown(parent, label)
-
-    f.Dropdown:SetupMenu(function(dropdown, root)
+    local value = nil
+    f.Dropdown:SetupMenu(function(owner, root)
         for _, item in ipairs(items) do
-            root:CreateButton(item.label, function()
-                dropdown:OverrideText(item.label)
+            local function IsSelected()
+                return value == item.value
+            end
 
+            local function SetSelected()
+                value = item.value
                 if onSelect then
-                    onSelect(item.value)
+                    onSelect(value)
+                    parent:UpdateComponent()
                 end
-            end)
-        end
-    end)
+            end
 
-    table.insert(parent.layout, f)
-end
-
-function SettingsComponents:CreateTextureDropDown(parent, label, items)
-    local f = CreateBaseDropdown(parent, label)
-
-    f.Dropdown:SetupMenu(function(dropdown, root)
-        for _, item in ipairs(items) do
-            root:CreateButton(item.label, function()
-                dropdown:OverrideText(item.label)
-
-                parent.settings.textureCoords = BufMedia.GetTexCoords(item.value)
-                parent:UpdateComponent()
-            end)
+            root:CreateRadio(item.label, IsSelected, SetSelected)
         end
     end)
 

@@ -14,7 +14,7 @@ function FrameTextureComponentSettingsMixin:BuildSettings()
     textures:Add("no_portrait_2_row_shadow", "No Portrait")
     textures:Add("no_portrait_2_row", "No Portrait - No Shadow")
 
-    SettingsComponents:CreateTextureDropDown(self, "Texture", textures:GetData())
+    SettingsComponents:CreateDropdown(self, "Texture", textures:GetData(), function(v) self.settings.textureCoords = BufMedia.GetTexCoords(v) end)
     SettingsComponents:CreateSlider(self, "X Position", -50, 50, 1, "", function(v) print(v) end)
     SettingsComponents:CreateSlider(self, "Y Position", -50, 50, 1, "", function(v) print(v) end)
 
