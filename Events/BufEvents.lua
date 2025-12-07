@@ -10,5 +10,9 @@ function handler.ADDON_LOADED(name)
     if name == BufData.addon_name then
         print(BufData.addon_name .. " loaded")
         SettingsMenu.InitMenu()
+
+        if BufComponents == {} then
+            BufCompoents = CreateComponentSettings()
+        end
     end
 end

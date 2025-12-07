@@ -2,11 +2,13 @@ BaseComponentSettingsMixin = {}
 
 function BaseComponentSettingsMixin:OnLoad()
     self.layout = {}
-    self.settings = {}
+end
 
-    if not self.isBuilt then
+function BaseComponentSettingsMixin:OnShow()
+    if self.GetElementData then
+        self.component = self:GetElementData().data.component
         self:BuildSettings()
-    end
+     end
 end
 
 function BaseComponentSettingsMixin:UpdateLayout()
@@ -23,6 +25,7 @@ function BaseComponentSettingsMixin:UpdateLayout()
 end
 
 function BaseComponentSettingsMixin:BuildSettings()end
+function BaseComponentSettingsMixin:UpdateComponent()end
 
 --- ============================== ---
 --- ===      Frame Texture     === ---
@@ -30,25 +33,18 @@ function BaseComponentSettingsMixin:BuildSettings()end
 FrameTextureComponentSettingsMixin = CreateFromMixins(BaseComponentSettingsMixin)
 
 function FrameTextureComponentSettingsMixin:BuildSettings()
+    if self.isBuilt then return end
+
     local textures = Settings.CreateControlTextContainer()
     textures:Add("no_portrait_2_row_shadow", "No Portrait")
     textures:Add("no_portrait_2_row", "No Portrait - No Shadow")
 
-    SettingsComponents:CreateDropdown(self, "Texture", textures:GetData(), function(v) self.settings.frameTextureCoords = BufMedia.GetTexCoords(v) end)
+    SettingsComponents:CreateDropdown(self, "Texture", textures:GetData(), BufComponents.Player.Frame, "texture")
 
     self:UpdateLayout()
-    self:UpdateComponent()
     self.isBuilt = true
 end
 
---TODO: Move to Component itself, after settings get added properly
 function FrameTextureComponentSettingsMixin:UpdateComponent()
-    if self.GetElementData then
-        local c = self:GetElementData().data.component
-        if c then
-            c.Texture:SetTexture(self.settings.frameTexture)
-            local t = self.settings.frameTextureCoords
-            c.Texture:SetTexCoord(t.left, t.right, t.top, t.bottom)
-        end
-    end
+    if self.component then self.component:UpdateComponent() end
 end

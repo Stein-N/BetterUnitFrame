@@ -2,6 +2,7 @@
 -- ==         Saved Variables         == --
 -- ===================================== --
 BetterUnitFrameSettings = {}
+BufComponents = {}
 
 -- ===================================== --
 -- ==        Global Variables         == --

@@ -67,7 +67,7 @@ function SettingsComponents:CreateCheckbox(parent, label, updateFunc)
     table.insert(parent.layout, f)
 end
 
-function SettingsComponents:CreateDropdown(parent, label, items, onSelect)
+function SettingsComponents:CreateDropdown(parent, label, items, settingsTable, key)
     local f = CreateBaseFrame(parent)
     f:SetLabel(label)
 
@@ -78,19 +78,15 @@ function SettingsComponents:CreateDropdown(parent, label, items, onSelect)
     f.Dropdown:SetScript("OnEnter", function() f:OnEnter() end)
     f.Dropdown:SetScript("OnLeave", function() f:OnLeave() end)
 
-    local value = nil
     f.Dropdown:SetupMenu(function(owner, root)
         for _, item in ipairs(items) do
             local function IsSelected()
-                return value == item.value
+                return settingsTable[key] == item.value
             end
 
             local function SetSelected()
-                value = item.value
-                if onSelect then
-                    onSelect(value)
-                    parent:UpdateComponent()
-                end
+                settingsTable[key] = item.value
+                parent:UpdateComponent()
             end
 
             root:CreateRadio(item.label, IsSelected, SetSelected)
