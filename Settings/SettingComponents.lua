@@ -67,7 +67,7 @@ function SettingsComponents:CreateCheckbox(parent, label, updateFunc)
     table.insert(parent.layout, f)
 end
 
-function SettingsComponents:CreateDropdown(parent, label, items, onSelect)
+local function CreateBaseDropdown(parent, label)
     local f = CreateBaseFrame(parent)
     f:SetLabel(label)
 
@@ -78,6 +78,12 @@ function SettingsComponents:CreateDropdown(parent, label, items, onSelect)
     f.Dropdown:SetScript("OnEnter", function() f:OnEnter() end)
     f.Dropdown:SetScript("OnLeave", function() f:OnLeave() end)
 
+    return f
+end
+
+function SettingsComponents:CreateDropdown(parent, label, items, onSelect)
+    local f = CreateBaseDropdown(parent, label)
+
     f.Dropdown:SetupMenu(function(dropdown, root)
         for _, item in ipairs(items) do
             root:CreateButton(item.label, function()
@@ -86,6 +92,23 @@ function SettingsComponents:CreateDropdown(parent, label, items, onSelect)
                 if onSelect then
                     onSelect(item.value)
                 end
+            end)
+        end
+    end)
+
+    table.insert(parent.layout, f)
+end
+
+function SettingsComponents:CreateTextureDropDown(parent, label, items)
+    local f = CreateBaseDropdown(parent, label)
+
+    f.Dropdown:SetupMenu(function(dropdown, root)
+        for _, item in ipairs(items) do
+            root:CreateButton(item.label, function()
+                dropdown:OverrideText(item.label)
+
+                parent.settings.textureCoords = BufMedia.GetTexCoords(item.value)
+                parent:UpdateComponent()
             end)
         end
     end)

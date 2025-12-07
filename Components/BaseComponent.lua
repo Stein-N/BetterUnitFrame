@@ -1,11 +1,9 @@
 BaseComponentMixin = {}
 
-function BaseComponentMixin:UpdateComponent()end
-
 function BaseComponentMixin:SetFocus()
     if not self.isFocused then
         self.isFocused = true
-        self:SetBackdropBorderColor(1, 1, 1, 1)
+        self:SetBackdropBorderColor(1, 1, 1, 0.4)
 
         SettingsMenu:SetComponentFocus(self)
 

@@ -18,7 +18,6 @@ end
 
 local function CreateComponent(parent, type)
     local f = CreateFrame("Frame", nil, parent, "FrameTextureComponent")
-    f:SetSize(100, 28)
     f:SetPoint("CENTER")
 
     f:BuildSettings(menuCategory)
